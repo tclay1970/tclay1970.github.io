@@ -36,19 +36,21 @@
 
   /* NEW SIDE IMAGE */
   .side-image {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 120px;        /* keeps it skinny */
-  z-index: 2;
-  overflow: hidden;
-}
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 120px;
+    z-index: 2;
+    overflow: hidden;
+  }
+
   .side-image img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: contain;
-}
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+
   .logo {
     width: 230px;
     margin-bottom: 30px;
@@ -85,7 +87,7 @@
     position: absolute;
     top: 245px;
     right: 20px;
-    z-index: 3; /* above side image */
+    z-index: 3;
   }
 
   .profile img {
@@ -163,6 +165,24 @@
     text-decoration: none;
     color: inherit;
   }
+
+  /* VCARD BUTTON */
+  .vcard-container {
+    padding: 25px 20px 40px;
+    text-align: center;
+    background: #fff;
+  }
+
+  .vcard-btn {
+    display: inline-block;
+    background: #012D68;
+    color: white;
+    padding: 14px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 16px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  }
 </style>
 </head>
 
@@ -172,7 +192,6 @@
 
   <div class="header">
 
-    <!-- SIDE IMAGE -->
     <div class="side-image">
       <img src="../images/logos/photostrip.png" alt="Aircraft or Instructor Action Shot">
     </div>
@@ -203,7 +222,6 @@
 
   <div class="contact">
 
-    <!-- ENROLLMENT -->
     <a href="mailto:info@mlbflight.com">
       <div class="contact-item">
         <div class="icon">
@@ -219,7 +237,6 @@
       </div>
     </a>
 
-    <!-- DIRECT CONTACT (ANONYMIZED) -->
     <a href="mailto:nicolas@mlbflight.com">
       <div class="contact-item">
         <div class="icon">
@@ -235,7 +252,6 @@
       </div>
     </a>
 
-    <!-- PHONE -->
     <a href="tel:+13213453194">
       <div class="contact-item">
         <div class="icon">
@@ -250,7 +266,6 @@
       </div>
     </a>
 
-    <!-- WEBSITE -->
     <a href="https://www.flyrocketair.com" target="_blank">
       <div class="contact-item">
         <div class="icon">
@@ -264,7 +279,6 @@
       </div>
     </a>
 
-    <!-- INSTAGRAM -->
     <a href="https://instagram.com/mlbflight" target="_blank">
       <div class="contact-item">
         <div class="icon">
@@ -278,7 +292,6 @@
       </div>
     </a>
 
-    <!-- FACEBOOK -->
     <a href="https://facebook.com/MLBFlightTraining" target="_blank">
       <div class="contact-item">
         <div class="icon">
@@ -290,7 +303,6 @@
       </div>
     </a>
 
-    <!-- REVIEW -->
     <a href="https://g.page/r/CRQoLxiZ1dOKEAI/review" target="_blank">
       <div class="contact-item">
         <div class="icon">
@@ -302,7 +314,6 @@
       </div>
     </a>
 
-    <!-- LOCATION -->
     <a href="https://www.google.com/maps?q=1401+General+Aviation+Drive+Melbourne+FL" target="_blank">
       <div class="contact-item">
         <div class="icon">
@@ -320,7 +331,45 @@
 
   </div>
 
+  <!-- VCARD BUTTON -->
+  <div class="vcard-container">
+    <a id="vcardBtn" class="vcard-btn">Save Contact</a>
+  </div>
+
 </div>
+
+<script>
+  const vcardData =
+`BEGIN:VCARD
+VERSION:3.0
+FN;CHARSET=UTF-8:Nic Clayton
+N;CHARSET=UTF-8:Clayton;Nic;;;
+EMAIL;CHARSET=UTF-8;type=HOME,INTERNET:nicolas@mlbflight.com
+EMAIL;CHARSET=UTF-8;type=WORK,INTERNET:info@mlbflight.com
+TEL;TYPE=WORK,VOICE:3213453194
+ADR;CHARSET=UTF-8;TYPE=WORK:;;1401 General Aviation Drive;Melbourne;FL;;
+URL;type=WORK;CHARSET=UTF-8:www.flyrocketair.com
+REV:2026-05-02T15:20:44.292Z
+END:VCARD`;
+
+  const vcardBtn = document.getElementById("vcardBtn");
+
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+  if (isIOS) {
+    // iOS: open directly so it prompts "Add to Contacts"
+    const blob = new Blob([vcardData], { type: "text/vcard" });
+    const url = URL.createObjectURL(blob);
+    vcardBtn.href = url;
+    vcardBtn.target = "_blank";
+  } else {
+    // Android/Desktop: download file
+    const blob = new Blob([vcardData], { type: "text/vcard" });
+    const url = URL.createObjectURL(blob);
+    vcardBtn.href = url;
+    vcardBtn.download = "nic-clayton.vcf";
+  }
+</script>
 
 </body>
 </html>
