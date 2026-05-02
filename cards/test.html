@@ -34,6 +34,7 @@
     overflow: hidden;
   }
 
+  /* NEW SIDE IMAGE */
   .side-image {
     position: absolute;
     top: 0;
@@ -81,6 +82,7 @@
     font-style: normal;
   }
 
+  /* PROFILE */
   .profile {
     position: absolute;
     top: 245px;
@@ -96,6 +98,7 @@
     box-shadow: 0 10px 25px rgba(0,0,0,0.25);
   }
 
+  /* CONTENT */
   .content {
     position: relative;
     padding: 10px 24px 24px;
@@ -110,6 +113,7 @@
     margin-bottom: 30px;
   }
 
+  /* CONTACT */
   .contact {
     background: #f1f5f9;
     padding: 20px;
@@ -162,22 +166,22 @@
     color: inherit;
   }
 
-  /* NEW BUTTON STYLE */
-  .vcard-btn {
-    width: 100%;
-    padding: 14px;
-    margin-top: 10px;
-    background: #012D68;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
+  /* VCARD BUTTON */
+  .vcard-container {
+    padding: 25px 20px 40px;
+    text-align: center;
+    background: #fff;
   }
 
-  .vcard-btn:hover {
-    opacity: 0.9;
+  .vcard-btn {
+    display: inline-block;
+    background: #012D68;
+    color: white;
+    padding: 14px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 16px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
   }
 </style>
 </head>
@@ -325,35 +329,49 @@
       </div>
     </a>
 
-    <!-- vCard Button (ADDED) -->
-    <button class="vcard-btn" onclick="downloadVCard()">
-      Download Contact (vCard)
-    </button>
+  </div>
 
+  <!-- VCARD BUTTON -->
+  <div class="vcard-container">
+    <a id="vcardBtn" class="vcard-btn">Save Contact</a>
   </div>
 
 </div>
 
 <script>
-function downloadVCard() {
-  const vcard = `BEGIN:VCARD
+  const vcardData =
+`BEGIN:VCARD
 VERSION:3.0
-FN:Nic Clayton
-TITLE:Assistant Chief Flight Instructor
-ORG:MLB Flight
-TEL:+13213453194
-EMAIL:nicolas@mlbflight.com
-URL:https://www.flyrocketair.com
-END:VCARD`;
+FN;CHARSET=UTF-8:Nic Clayton
+N;CHARSET=UTF-8:Clayton;Nic;;;
+EMAIL;CHARSET=UTF-8;type=HOME,INTERNET:nicolas@mlbflight.com
+EMAIL;CHARSET=UTF-8;type=WORK,INTERNET:info@mlbflight.com
+TEL;TYPE=WORK,VOICE:3213453194
+ADR;CHARSET=UTF-8;TYPE=WORK:;;1401 General Aviation Drive;Melbourne;FL;;
+ROLE;CHARSET=UTF-8:Assistant Chief Flight Instructor
+ORG;CHARSET=UTF-8:Rocket Air
+URL;type=WORK;CHARSET=UTF-8:www.flyrocketair.com
+REV:2026-05-02T15:18:08.571Z
+END:VCARD
+`;
 
-  const blob = new Blob([vcard], { type: "text/vcard" });
-  const link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
-  link.download = "Nic_Clayton.vcf";
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-}
+  const vcardBtn = document.getElementById("vcardBtn");
+
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+  if (isIOS) {
+    // iOS: open directly so it prompts "Add to Contacts"
+    const blob = new Blob([vcardData], { type: "text/vcard" });
+    const url = URL.createObjectURL(blob);
+    vcardBtn.href = url;
+    vcardBtn.target = "_blank";
+  } else {
+    // Android/Desktop: download file
+    const blob = new Blob([vcardData], { type: "text/vcard" });
+    const url = URL.createObjectURL(blob);
+    vcardBtn.href = url;
+    vcardBtn.download = "nic-clayton.vcf";
+  }
 </script>
 
 </body>
