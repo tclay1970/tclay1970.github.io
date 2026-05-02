@@ -25,7 +25,10 @@
     position: relative;
     background: linear-gradient(135deg, #012D68 0%, #012D68 100%);
     color: white;
-    padding: 30px 20px 140px;
+
+    /* MORE RIGHT SPACE so text doesn't go under profile */
+    padding: 30px 150px 140px 20px;
+
     clip-path: polygon(0 0, 100% 0, 100% 75%, 0 90%);
     z-index: 1;
   }
@@ -76,7 +79,7 @@
     font-style: italic;
   }
 
-  /* PROFILE IMAGE (FORCED FRONT) */
+  /* PROFILE IMAGE */
   .profile {
     position: absolute;
     top: 210px;
@@ -157,7 +160,6 @@
 
     <div class="name">Nic Clayton</div>
 
-    <!-- CERTIFICATION BOXES -->
     <div class="certs">
       <div class="badge">CFI</div>
       <div class="badge">CFII</div>
@@ -168,7 +170,6 @@
     <div class="role">Assistant Chief Flight Instructor</div>
   </div>
 
-  <!-- PROFILE (NOW GUARANTEED FRONT) -->
   <div class="profile">
     <img src="images/instructors/nclayton.jpg" alt="Nic Clayton">
   </div>
