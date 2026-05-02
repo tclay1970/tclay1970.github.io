@@ -27,22 +27,11 @@
     color: white;
     padding: 30px 150px 140px 20px;
     clip-path: polygon(0 0, 100% 0, 100% 75%, 0 90%);
-    z-index: 1;
   }
 
   .logo {
     width: 230px;
-    height: auto;
     margin-bottom: 30px;
-    display: block;
-    position: relative;
-    z-index: 2;
-  }
-
-  .name,
-  .role {
-    position: relative;
-    z-index: 2;
   }
 
   .name {
@@ -51,14 +40,11 @@
     margin-bottom: 10px;
   }
 
-  /* CERTIFICATIONS */
   .certs {
     display: flex;
     gap: 6px;
     flex-wrap: wrap;
     margin-bottom: 16px;
-    position: relative;
-    z-index: 2;
   }
 
   .badge {
@@ -67,8 +53,6 @@
     border-radius: 5px;
     font-size: 11px;
     font-weight: 600;
-    letter-spacing: 0.3px;
-    backdrop-filter: blur(4px);
   }
 
   .role {
@@ -76,12 +60,11 @@
     font-style: italic;
   }
 
-  /* PROFILE IMAGE */
+  /* PROFILE */
   .profile {
     position: absolute;
     top: 245px;
     right: 20px;
-    z-index: 999;
   }
 
   .profile img {
@@ -109,7 +92,6 @@
   .contact {
     background: #f1f5f9;
     padding: 20px;
-    border-top: 1px solid #e5e7eb;
   }
 
   .contact-item {
@@ -127,8 +109,17 @@
     align-items: center;
     justify-content: center;
     margin-right: 15px;
-    color: white;
-    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .icon svg {
+    width: 22px;
+    height: 22px;
+    stroke: white;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
   }
 
   .contact-text {
@@ -159,7 +150,6 @@
 
   <div class="header">
 
-    <!-- FIXED PATH -->
     <img class="logo" src="../images/logos/RA-FA WHITE.png" alt="Rocket Air Flight Academy">
 
     <div class="name">Nic Clayton</div>
@@ -175,7 +165,6 @@
   </div>
 
   <div class="profile">
-    <!-- FIXED PATH -->
     <img src="../images/instructors/nclayton.jpg" alt="Nic Clayton">
   </div>
 
@@ -187,67 +176,114 @@
 
   <div class="contact">
 
+    <!-- EMAIL (ENROLLMENT) -->
     <a href="mailto:info@mlbflight.com">
       <div class="contact-item">
-        <div class="icon">✉️</div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M4 4h16v16H4z"/>
+            <path d="M4 7l8 5 8-5"/>
+          </svg>
+        </div>
         <div class="contact-text">
           info@mlbflight.com<br>
-          <span class="label">enrollment inquiries</span>
+          <span class="label">Enrollment Inquiries</span>
         </div>
       </div>
     </a>
 
+    <!-- EMAIL (DIRECT) -->
     <a href="mailto:nicolas@mlbflight.com">
       <div class="contact-item">
-        <div class="icon">✉️</div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M4 4h16v16H4z"/>
+            <path d="M4 7l8 5 8-5"/>
+          </svg>
+        </div>
         <div class="contact-text">
           nicolas@mlbflight.com<br>
-          <span class="label">contact me directly</span>
+          <span class="label">Questions? Contact Me Directly!</span>
         </div>
       </div>
     </a>
 
+    <!-- PHONE -->
     <a href="tel:+13213453194">
       <div class="contact-item">
-        <div class="icon">📞</div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.11 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13 1.21.38 2.39.74 3.53a2 2 0 0 1-.45 2.11L8.09 10.91a16 16 0 0 0 6 6l1.55-1.31a2 2 0 0 1 2.11-.45c1.14.36 2.32.61 3.53.74A2 2 0 0 1 22 16.92z"/>
+          </svg>
+        </div>
         <div class="contact-text">
           (321) 345-3194 <span class="ext">ext. 2</span><br>
-          <span class="label">book a discovery flight</span>
+          <span class="label">Book Your Discovery Flight!</span>
         </div>
       </div>
     </a>
 
+    <!-- WEBSITE -->
     <a href="https://www.flyrocketair.com" target="_blank">
       <div class="contact-item">
-        <div class="icon">🌐</div>
-        <div class="contact-text">Visit Our Website</div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M2 12h20"/>
+            <path d="M12 2a15 15 0 0 1 0 20a15 15 0 0 1 0-20"/>
+          </svg>
+        </div>
+        <div class="contact-text">Visit Our Website!</div>
       </div>
     </a>
 
+    <!-- INSTAGRAM -->
     <a href="https://instagram.com/mlbflight" target="_blank">
       <div class="contact-item">
-        <div class="icon">📸</div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24">
+            <rect x="2" y="2" width="20" height="20" rx="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="1"/>
+          </svg>
+        </div>
         <div class="contact-text">@mlbflight</div>
       </div>
     </a>
 
+    <!-- FACEBOOK -->
     <a href="https://facebook.com/MLBFlightTraining" target="_blank">
       <div class="contact-item">
-        <div class="icon">f</div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+        </div>
         <div class="contact-text">MLBFlightTraining</div>
       </div>
     </a>
 
+    <!-- REVIEW -->
     <a href="https://g.page/r/CRQoLxiZ1dOKEAI/review" target="_blank">
       <div class="contact-item">
-        <div class="icon">⭐</div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24">
+            <polygon points="12 2 15 9 22 9 16.5 13.5 18 21 12 17 6 21 7.5 13.5 2 9 9 9"/>
+          </svg>
+        </div>
         <div class="contact-text">Leave a Review!</div>
       </div>
     </a>
 
+    <!-- LOCATION -->
     <a href="https://www.google.com/maps?q=1401+General+Aviation+Drive+Melbourne+FL" target="_blank">
       <div class="contact-item">
-        <div class="icon">📍</div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
         <div class="contact-text">
           1401 General Aviation Drive<br>
           Melbourne, FL
