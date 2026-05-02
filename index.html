@@ -27,7 +27,7 @@
     color: white;
     padding: 30px 20px 140px;
     clip-path: polygon(0 0, 100% 0, 100% 75%, 0 90%);
-    z-index: 2; /* ensures header content sits above lower layers */
+    z-index: 1;
   }
 
   .logo {
@@ -35,16 +35,15 @@
     height: auto;
     margin-bottom: 30px;
     display: block;
-
     position: relative;
-    z-index: 3; /* above image */
+    z-index: 2;
   }
 
   .name,
   .subtitle,
   .role {
     position: relative;
-    z-index: 3; /* ensures ALL text stays above profile photo */
+    z-index: 2;
   }
 
   .name {
@@ -63,12 +62,13 @@
     font-style: italic;
   }
 
-  /* PROFILE IMAGE */
+  /* PROFILE IMAGE (FORCED FRONT) */
   .profile {
     position: absolute;
     top: 210px;
     right: 24px;
-    z-index: 1; /* pushed behind header text */
+
+    z-index: 999; /* FORCE ABOVE EVERYTHING */
   }
 
   .profile img {
@@ -77,9 +77,7 @@
     border-radius: 50%;
     object-fit: cover;
 
-    /* removed border as requested */
     border: none;
-
     box-shadow: 0 10px 25px rgba(0,0,0,0.25);
   }
 
@@ -143,7 +141,6 @@
 
   <div class="header">
 
-    <!-- LOGO -->
     <img class="logo" src="images/logos/RA-FA WHITE.png" alt="Rocket Air Flight Academy">
 
     <div class="name">Nic Clayton</div>
@@ -151,19 +148,17 @@
     <div class="role">Assistant Chief Flight Instructor</div>
   </div>
 
-  <!-- PROFILE IMAGE -->
+  <!-- PROFILE (NOW GUARANTEED FRONT) -->
   <div class="profile">
     <img src="images/instructors/nclayton.jpg" alt="Nic Clayton">
   </div>
 
-  <!-- CONTENT -->
   <div class="content">
     <div class="description">
       Providing industry leading flight instruction to aspiring career and recreational aviators.
     </div>
   </div>
 
-  <!-- CONTACT -->
   <div class="contact">
 
     <a href="mailto:info@mlbflight.com">
