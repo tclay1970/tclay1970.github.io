@@ -38,17 +38,16 @@
   .side-image {
   position: absolute;
   top: 0;
-  bottom: 0;
   right: 0;
-  width: 120px;
+  width: 120px;        /* keeps it skinny */
   z-index: 2;
   overflow: hidden;
-  border-radius: 0;
 }
   .side-image img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  display: block;
+  object-fit: contain;
 }
   .logo {
     width: 230px;
