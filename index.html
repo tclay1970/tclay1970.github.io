@@ -25,9 +25,7 @@
     position: relative;
     background: linear-gradient(135deg, #012D68 0%, #012D68 100%);
     color: white;
-
     padding: 30px 150px 140px 20px;
-
     clip-path: polygon(0 0, 100% 0, 100% 75%, 0 90%);
     z-index: 1;
   }
@@ -53,7 +51,7 @@
     margin-bottom: 10px;
   }
 
-  /* CERTIFICATION BOXES */
+  /* CERTS */
   .certs {
     display: flex;
     gap: 6px;
@@ -78,20 +76,19 @@
     font-style: italic;
   }
 
-  /* PROFILE IMAGE — LOWER + BIGGER */
+  /* PROFILE IMAGE */
   .profile {
     position: absolute;
-    top: 245px; /* moved lower so diagonal hits upper third */
+    top: 245px;
     right: 20px;
     z-index: 999;
   }
 
   .profile img {
-    width: 155px;  /* enlarged */
-    height: 155px; /* enlarged */
+    width: 155px;
+    height: 155px;
     border-radius: 50%;
     object-fit: cover;
-    border: none;
     box-shadow: 0 10px 25px rgba(0,0,0,0.25);
   }
 
@@ -147,6 +144,11 @@
     text-decoration: none;
     color: inherit;
   }
+
+  .ext {
+    color: #9ca3af;
+    font-size: 14px;
+  }
 </style>
 </head>
 
@@ -182,32 +184,70 @@
 
   <div class="contact">
 
+    <!-- Enrollment -->
     <a href="mailto:info@mlbflight.com">
       <div class="contact-item">
         <div class="icon">✉️</div>
-        <div>
-          <div class="contact-text">info@mlbflight.com</div>
-          <div class="label">work</div>
-        </div>
+        <div class="contact-text">info@mlbflight.com</div>
       </div>
     </a>
 
-    <a href="tel:+11234567890">
+    <!-- Direct Contact -->
+    <a href="mailto:nicolas@mlbflight.com">
+      <div class="contact-item">
+        <div class="icon">✉️</div>
+        <div class="contact-text">nicolas@mlbflight.com</div>
+      </div>
+    </a>
+
+    <!-- Phone -->
+    <a href="tel:+13213453194">
       <div class="contact-item">
         <div class="icon">📞</div>
-        <div>
-          <div class="contact-text">(123) 456-7890</div>
-          <div class="label">mobile</div>
+        <div class="contact-text">
+          (321) 345-3194 <span class="ext">extension 2</span>
         </div>
       </div>
     </a>
 
-    <a href="https://linkedin.com" target="_blank">
+    <!-- Website -->
+    <a href="https://www.flyrocketair.com" target="_blank">
       <div class="contact-item">
-        <div class="icon">in</div>
-        <div>
-          <div class="contact-text">LinkedIn Profile</div>
-          <div class="label">social</div>
+        <div class="icon">🌐</div>
+        <div class="contact-text">Visit Our Website</div>
+      </div>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/mlbflight" target="_blank">
+      <div class="contact-item">
+        <div class="icon">📸</div>
+        <div class="contact-text">@mlbflight</div>
+      </div>
+    </a>
+
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/MLBFlightTraining" target="_blank">
+      <div class="contact-item">
+        <div class="icon">f</div>
+        <div class="contact-text">MLBFlightTraining</div>
+      </div>
+    </a>
+
+    <!-- Review -->
+    <a href="https://g.page/r/CRQoLxiZ1dOKEAI/review" target="_blank">
+      <div class="contact-item">
+        <div class="icon">⭐</div>
+        <div class="contact-text">Leave a Review!</div>
+      </div>
+    </a>
+
+    <!-- Address -->
+    <a href="https://www.google.com/maps/search/?api=1&query=1401+General+Aviation+Drive+Melbourne+FL" target="_blank">
+      <div class="contact-item">
+        <div class="icon">📍</div>
+        <div class="contact-text">
+          1401 General Aviation Drive, Melbourne, FL
         </div>
       </div>
     </a>
