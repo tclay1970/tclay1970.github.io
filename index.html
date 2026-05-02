@@ -40,7 +40,6 @@
   }
 
   .name,
-  .subtitle,
   .role {
     position: relative;
     z-index: 2;
@@ -49,12 +48,27 @@
   .name {
     font-size: 34px;
     font-weight: 700;
-    margin-bottom: 6px;
+    margin-bottom: 10px;
   }
 
-  .subtitle {
-    font-size: 20px;
+  /* CERTIFICATION BOXES */
+  .certs {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
     margin-bottom: 16px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .badge {
+    background: rgba(255, 255, 255, 0.18);
+    padding: 3px 7px;
+    border-radius: 5px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    backdrop-filter: blur(4px);
   }
 
   .role {
@@ -67,8 +81,7 @@
     position: absolute;
     top: 210px;
     right: 24px;
-
-    z-index: 999; /* FORCE ABOVE EVERYTHING */
+    z-index: 999;
   }
 
   .profile img {
@@ -76,7 +89,6 @@
     height: 130px;
     border-radius: 50%;
     object-fit: cover;
-
     border: none;
     box-shadow: 0 10px 25px rgba(0,0,0,0.25);
   }
@@ -144,7 +156,15 @@
     <img class="logo" src="images/logos/RA-FA WHITE.png" alt="Rocket Air Flight Academy">
 
     <div class="name">Nic Clayton</div>
-    <div class="subtitle">Gold Seal CFI</div>
+
+    <!-- CERTIFICATION BOXES -->
+    <div class="certs">
+      <div class="badge">CFI</div>
+      <div class="badge">CFII</div>
+      <div class="badge">MEI</div>
+      <div class="badge">Gold Seal</div>
+    </div>
+
     <div class="role">Assistant Chief Flight Instructor</div>
   </div>
 
