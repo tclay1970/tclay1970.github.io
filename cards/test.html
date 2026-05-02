@@ -34,21 +34,22 @@
     overflow: hidden;
   }
 
-  /* NEW SIDE IMAGE */
   .side-image {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 120px;        /* keeps it skinny */
-  z-index: 2;
-  overflow: hidden;
-}
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 120px;
+    z-index: 2;
+    overflow: hidden;
+  }
+
   .side-image img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: contain;
-}
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+
   .logo {
     width: 230px;
     margin-bottom: 30px;
@@ -80,12 +81,11 @@
     font-style: normal;
   }
 
-  /* PROFILE */
   .profile {
     position: absolute;
     top: 245px;
     right: 20px;
-    z-index: 3; /* above side image */
+    z-index: 3;
   }
 
   .profile img {
@@ -96,7 +96,6 @@
     box-shadow: 0 10px 25px rgba(0,0,0,0.25);
   }
 
-  /* CONTENT */
   .content {
     position: relative;
     padding: 10px 24px 24px;
@@ -111,7 +110,6 @@
     margin-bottom: 30px;
   }
 
-  /* CONTACT */
   .contact {
     background: #f1f5f9;
     padding: 20px;
@@ -163,6 +161,24 @@
     text-decoration: none;
     color: inherit;
   }
+
+  /* NEW BUTTON STYLE */
+  .vcard-btn {
+    width: 100%;
+    padding: 14px;
+    margin-top: 10px;
+    background: #012D68;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .vcard-btn:hover {
+    opacity: 0.9;
+  }
 </style>
 </head>
 
@@ -172,7 +188,6 @@
 
   <div class="header">
 
-    <!-- SIDE IMAGE -->
     <div class="side-image">
       <img src="../images/logos/photostrip.png" alt="Aircraft or Instructor Action Shot">
     </div>
@@ -203,7 +218,6 @@
 
   <div class="contact">
 
-    <!-- ENROLLMENT -->
     <a href="mailto:info@mlbflight.com">
       <div class="contact-item">
         <div class="icon">
@@ -219,7 +233,6 @@
       </div>
     </a>
 
-    <!-- DIRECT CONTACT (ANONYMIZED) -->
     <a href="mailto:nicolas@mlbflight.com">
       <div class="contact-item">
         <div class="icon">
@@ -235,7 +248,6 @@
       </div>
     </a>
 
-    <!-- PHONE -->
     <a href="tel:+13213453194">
       <div class="contact-item">
         <div class="icon">
@@ -250,7 +262,6 @@
       </div>
     </a>
 
-    <!-- WEBSITE -->
     <a href="https://www.flyrocketair.com" target="_blank">
       <div class="contact-item">
         <div class="icon">
@@ -264,7 +275,6 @@
       </div>
     </a>
 
-    <!-- INSTAGRAM -->
     <a href="https://instagram.com/mlbflight" target="_blank">
       <div class="contact-item">
         <div class="icon">
@@ -278,7 +288,6 @@
       </div>
     </a>
 
-    <!-- FACEBOOK -->
     <a href="https://facebook.com/MLBFlightTraining" target="_blank">
       <div class="contact-item">
         <div class="icon">
@@ -290,7 +299,6 @@
       </div>
     </a>
 
-    <!-- REVIEW -->
     <a href="https://g.page/r/CRQoLxiZ1dOKEAI/review" target="_blank">
       <div class="contact-item">
         <div class="icon">
@@ -302,7 +310,6 @@
       </div>
     </a>
 
-    <!-- LOCATION -->
     <a href="https://www.google.com/maps?q=1401+General+Aviation+Drive+Melbourne+FL" target="_blank">
       <div class="contact-item">
         <div class="icon">
@@ -318,9 +325,36 @@
       </div>
     </a>
 
+    <!-- vCard Button (ADDED) -->
+    <button class="vcard-btn" onclick="downloadVCard()">
+      Download Contact (vCard)
+    </button>
+
   </div>
 
 </div>
+
+<script>
+function downloadVCard() {
+  const vcard = `BEGIN:VCARD
+VERSION:3.0
+FN:Nic Clayton
+TITLE:Assistant Chief Flight Instructor
+ORG:MLB Flight
+TEL:+13213453194
+EMAIL:nicolas@mlbflight.com
+URL:https://www.flyrocketair.com
+END:VCARD`;
+
+  const blob = new Blob([vcard], { type: "text/vcard" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "Nic_Clayton.vcf";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+</script>
 
 </body>
 </html>
