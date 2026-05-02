@@ -37,19 +37,26 @@
   /* NEW SIDE IMAGE */
   .side-image {
   position: absolute;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+
   width: 120px;
+
+  /* critical: prevents top-origin layout behavior */
+  top: auto;
+
   z-index: 2;
   overflow: visible;
-}
-  .side-image {
-  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 90%);
 }
   .side-image img {
   width: 100%;
   height: auto;
   display: block;
+
+  /* forces upward "growth" behavior */
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
   .logo {
