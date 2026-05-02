@@ -17,85 +17,90 @@
     margin: auto;
     background: white;
     min-height: 100vh;
+    position: relative;
   }
 
-  /* TOP BLUE SECTION */
+  /* HEADER */
   .header {
-    background: linear-gradient(135deg, #2f4ea2, #3b5fc4);
+    background: linear-gradient(135deg, #2c4aa5 0%, #3f66d6 100%);
     color: white;
-    padding: 30px 20px 100px;
-    position: relative;
-    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 90%);
+    padding: 30px 20px 120px;
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 0 88%);
   }
 
   .logo {
     font-size: 14px;
     letter-spacing: 2px;
-    opacity: 0.8;
+    opacity: 0.85;
     margin-bottom: 30px;
   }
 
   .name {
-    font-size: 32px;
-    font-weight: bold;
-    margin-bottom: 8px;
+    font-size: 34px;
+    font-weight: 700;
+    margin-bottom: 6px;
   }
 
   .subtitle {
-    font-size: 18px;
-    opacity: 0.9;
-    margin-bottom: 20px;
+    font-size: 20px;
+    margin-bottom: 16px;
   }
 
   .role {
     font-size: 20px;
     font-style: italic;
-    opacity: 0.9;
   }
 
-  /* PROFILE IMAGE */
+  /* WHITE SECTION THAT OVERLAPS UP */
+  .main {
+    background: white;
+    margin-top: -60px; /* pulls it up into the header */
+    padding: 80px 24px 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* PROFILE IMAGE (NOW FLOATING OVER BOTH) */
   .profile {
     position: absolute;
-    bottom: -60px;
-    right: 20px;
+    top: 220px; /* adjust if needed */
+    right: 24px;
+    z-index: 2;
   }
 
   .profile img {
-    width: 120px;
-    height: 120px;
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
-    border: 5px solid white;
+    border: 6px solid white;
     object-fit: cover;
-  }
-
-  /* DESCRIPTION */
-  .content {
-    padding: 80px 20px 20px;
-    color: #374151;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
   }
 
   .description {
-    font-size: 18px;
-    line-height: 1.6;
+    font-size: 19px;
+    line-height: 1.7;
+    color: #374151;
     margin-bottom: 30px;
   }
 
-  /* CONTACT SECTION */
+  /* CONTACT */
   .contact {
-    background: #f3f4f6;
+    background: #f1f5f9;
     padding: 20px;
+    border-top: 1px solid #e5e7eb;
   }
 
   .contact-item {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 18px;
   }
 
   .icon {
     width: 50px;
     height: 50px;
-    background: #3b5fc4;
+    background: #3f66d6;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -111,7 +116,7 @@
 
   .label {
     font-size: 12px;
-    color: gray;
+    color: #6b7280;
   }
 
   a {
@@ -131,13 +136,15 @@
     <div class="name">Nic Clayton</div>
     <div class="subtitle">Gold Seal CFI</div>
     <div class="role">Assistant Chief Flight Instructor</div>
-
-    <div class="profile">
-      <img src="nclayton.jpg" alt="Nic Clayton">
-    </div>
   </div>
 
-  <div class="content">
+  <!-- FLOATING PROFILE -->
+  <div class="profile">
+    <img src="nclayton.jpg" alt="Nic Clayton">
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main">
     <div class="description">
       Providing industry leading flight instruction to aspiring career and recreational aviators.
     </div>
@@ -154,7 +161,7 @@
       </div>
     </a>
 
-    <a href="tel:+1234567890">
+    <a href="tel:+11234567890">
       <div class="contact-item">
         <div class="icon">📞</div>
         <div>
