@@ -1,1 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nic Clayton - Digital Card</title>
 
+<style>
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #e5e7eb;
+  }
+
+  .container {
+    max-width: 420px;
+    margin: auto;
+    background: white;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  /* HEADER */
+  .header {
+    position: relative;
+    background: linear-gradient(135deg, #012D68 0%, #012D68 100%);
+    color: white;
+    padding: 30px 150px 140px 20px;
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 90%);
+    z-index: 1;
+  }
+
+  .logo {
+    width: 230px;
+    height: auto;
+    margin-bottom: 30px;
+    display: block;
+    position: relative;
+    z-index: 2;
+  }
+
+  .name,
+  .role {
+    position: relative;
+    z-index: 2;
+  }
+
+  .name {
+    font-size: 34px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  /* CERTIFICATIONS */
+  .certs {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .badge {
+    background: rgba(255, 255, 255, 0.18);
+    padding: 3px 7px;
+    border-radius: 5px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    backdrop-filter: blur(4px);
+  }
+
+  .role {
+    font-size: 20px;
+    font-style: italic;
+  }
+
+  /* PROFILE IMAGE */
+  .profile {
+    position: absolute;
+    top: 245px;
+    right: 20px;
+    z-index: 999;
+  }
+
+  .profile img {
+    width: 155px;
+    height: 155px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  }
+
+  /* CONTENT */
+  .content {
+    padding: 10px 24px 24px;
+    margin-top: -10px;
+    color: #374151;
+  }
+
+  .description {
+    font-size: 19px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+  }
+
+  /* CONTACT */
+  .contact {
+    background: #f1f5f9;
+    padding: 20px;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 18px;
+  }
+
+  .icon {
+    width: 50px;
+    height: 50px;
+    background: #012D68;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    color: white;
+    font-size: 18px;
+  }
+
+  .contact-text {
+    font-size: 16px;
+    line-height: 1.3;
+  }
+
+  .label {
+    font-size: 12px;
+    color: #6b7280;
+  }
+
+  .ext {
+    color: #9ca3af;
+    font-size: 14px;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="header">
+
+    <img class="logo" src="images/logos/RA-FA WHITE.png" alt="Rocket Air Flight Academy">
+
+    <div class="name">Nic Clayton</div>
+
+    <div class="certs">
+      <div class="badge">CFI</div>
+      <div class="badge">CFII</div>
+      <div class="badge">MEI</div>
+      <div class="badge">Gold Seal</div>
+    </div>
+
+    <div class="role">Assistant Chief Flight Instructor</div>
+  </div>
+
+  <div class="profile">
+    <img src="images/instructors/nclayton.jpg" alt="Nic Clayton">
+  </div>
+
+  <div class="content">
+    <div class="description">
+      Providing industry leading flight instruction to aspiring career and recreational aviators.
+    </div>
+  </div>
+
+  <div class="contact">
+
+    <!-- Enrollment -->
+    <a href="mailto:info@mlbflight.com">
+      <div class="contact-item">
+        <div class="icon">✉️</div>
+        <div class="contact-text">
+          info@mlbflight.com<br>
+          <span class="label">enrollment inquiries</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Direct Contact -->
+    <a href="mailto:nicolas@mlbflight.com">
+      <div class="contact-item">
+        <div class="icon">✉️</div>
+        <div class="contact-text">
+          nicolas@mlbflight.com<br>
+          <span class="label">contact me directly</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Phone -->
+    <a href="tel:+13213453194">
+      <div class="contact-item">
+        <div class="icon">📞</div>
+        <div class="contact-text">
+          (321) 345-3194 <span class="ext">ext. 2</span><br>
+          <span class="label">book a discovery flight</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Website -->
+    <a href="https://www.flyrocketair.com" target="_blank">
+      <div class="contact-item">
+        <div class="icon">🌐</div>
+        <div class="contact-text">
+          Visit Our Website
+        </div>
+      </div>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://instagram.com/mlbflight" target="_blank">
+      <div class="contact-item">
+        <div class="icon">📸</div>
+        <div class="contact-text">
+          @mlbflight
+        </div>
+      </div>
+    </a>
+
+    <!-- Facebook -->
+    <a href="https://facebook.com/MLBFlightTraining" target="_blank">
+      <div class="contact-item">
+        <div class="icon">f</div>
+        <div class="contact-text">
+          MLBFlightTraining
+        </div>
+      </div>
+    </a>
+
+    <!-- Review -->
+    <a href="https://g.page/r/CRQoLxiZ1dOKEAI/review" target="_blank">
+      <div class="contact-item">
+        <div class="icon">⭐</div>
+        <div class="contact-text">
+          Leave a Review!
+        </div>
+      </div>
+    </a>
+
+    <!-- Address -->
+    <a href="https://www.google.com/maps?q=1401+General+Aviation+Drive+Melbourne+FL" target="_blank">
+      <div class="contact-item">
+        <div class="icon">📍</div>
+        <div class="contact-text">
+          1401 General Aviation Drive<br>
+          Melbourne, FL
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+</div>
+
+</body>
+</html>
