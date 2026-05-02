@@ -31,34 +31,27 @@
     padding: 30px 150px 140px 20px;
     clip-path: polygon(0 0, 100% 0, 100% 75%, 0 90%);
     z-index: 1;
-    overflow: visible;
+    overflow: hidden;
   }
 
   /* NEW SIDE IMAGE */
   .side-image {
   position: absolute;
+  top: 0;
   right: 0;
-  bottom: 0;
 
   width: 120px;
-
-  /* critical: prevents top-origin layout behavior */
-  top: auto;
+  height: 100%;
 
   z-index: 2;
-  overflow: visible;
+  overflow: hidden;
 }
   .side-image img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   display: block;
-
-  /* forces upward "growth" behavior */
-  position: absolute;
-  bottom: 0;
-  right: 0;
 }
-
   .logo {
     width: 230px;
     margin-bottom: 30px;
