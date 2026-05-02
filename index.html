@@ -24,15 +24,19 @@
   .header {
     background: linear-gradient(135deg, #2c4aa5 0%, #3f66d6 100%);
     color: white;
-    padding: 30px 20px 120px;
-    clip-path: polygon(0 0, 100% 0, 100% 70%, 0 88%);
+    padding: 30px 20px 140px;
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 90%);
   }
 
+  /* LOGO IMAGE */
   .logo {
-    font-size: 14px;
-    letter-spacing: 2px;
-    opacity: 0.85;
     margin-bottom: 30px;
+  }
+
+  .logo img {
+    width: 180px;
+    height: auto;
+    display: block;
   }
 
   .name {
@@ -51,19 +55,10 @@
     font-style: italic;
   }
 
-  /* WHITE SECTION THAT OVERLAPS UP */
-  .main {
-    background: white;
-    margin-top: -60px; /* pulls it up into the header */
-    padding: 80px 24px 24px;
-    position: relative;
-    z-index: 1;
-  }
-
-  /* PROFILE IMAGE (NOW FLOATING OVER BOTH) */
+  /* PROFILE IMAGE */
   .profile {
     position: absolute;
-    top: 220px; /* adjust if needed */
+    top: 210px;
     right: 24px;
     z-index: 2;
   }
@@ -77,10 +72,15 @@
     box-shadow: 0 10px 25px rgba(0,0,0,0.25);
   }
 
+  /* CONTENT */
+  .content {
+    padding: 30px 24px 24px;
+    color: #374151;
+  }
+
   .description {
     font-size: 19px;
     line-height: 1.7;
-    color: #374151;
     margin-bottom: 30px;
   }
 
@@ -131,20 +131,22 @@
 <div class="container">
 
   <div class="header">
-    <div class="logo">ROCKET AIR FLIGHT ACADEMY</div>
+
+    <!-- LOGO IMAGE REPLACED TEXT -->
+    <div class="logo">
+      <img src="images/instructors/nclayton.jpg" alt="Rocket Air Flight Academy Logo">
+    </div>
 
     <div class="name">Nic Clayton</div>
     <div class="subtitle">Gold Seal CFI</div>
     <div class="role">Assistant Chief Flight Instructor</div>
   </div>
 
-  <!-- FLOATING PROFILE -->
   <div class="profile">
-    <img src="nclayton.jpg" alt="Nic Clayton">
+    <img src="your-photo.jpg" alt="Nic Clayton">
   </div>
 
-  <!-- MAIN CONTENT -->
-  <div class="main">
+  <div class="content">
     <div class="description">
       Providing industry leading flight instruction to aspiring career and recreational aviators.
     </div>
