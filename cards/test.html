@@ -35,16 +35,18 @@
 
   /* NEW SIDE IMAGE */
   .side-image {
-    position: absolute;
-    top: 20px;
-    right: 0;
-    width: 120px;
-    height: 260px;
-    z-index: 2; /* above blue */
-    overflow: hidden;
-    border-radius: 10px 0 0 10px;
-  }
-
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 120px;
+  z-index: 2;
+  overflow: hidden;
+  border-radius: 0;
+}
+  .side-image {
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 90%);
+}
   .side-image img {
     width: 100%;
     height: 100%;
