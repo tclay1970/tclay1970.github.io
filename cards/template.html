@@ -183,69 +183,6 @@
     font-size: 16px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.15);
   }
-  /* MODAL */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 999;
-}
-
-.modal-content {
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  width: 90%;
-  max-width: 380px;
-  position: relative;
-}
-
-.modal-content input,
-.modal-content textarea {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 10px;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  font-family: inherit;
-}
-
-.modal-content button[type="submit"] {
-  width: 100%;
-  background: #012D68;
-  color: white;
-  padding: 14px;
-  border-radius: 8px;
-  font-weight: 600;
-  margin-top: 10px;
-}
-
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 12px;
-  background: none;
-  border: none;
-  font-size: 18px;
-}
-
-.success-msg {
-  color: green;
-  font-size: 14px;
-  margin-bottom: 10px;
-}
-
-.error-msg {
-  color: red;
-  font-size: 14px;
-  margin-bottom: 10px;
-}
 </style>
 </head>
 
@@ -405,102 +342,34 @@
   const vcardData =
 `BEGIN:VCARD
 VERSION:3.0
-N:Clayton;Nic;;;
-FN:Nic Clayton
-TITLE:Assistant Chief Flight Instructor
-ORG:MLB Flight
-EMAIL;TYPE=INTERNET:info@mlbflight.com
-EMAIL;TYPE=INTERNET:nicolas@mlbflight.com
-TEL;TYPE=CELL:+13213453194
-URL:https://www.flyrocketair.com
+FN;CHARSET=UTF-8:Instructor Name
+N;CHARSET=UTF-8:Last;First;;;
+EMAIL;CHARSET=UTF-8;type=HOME,INTERNET:instructorname@mlbflight.com
+EMAIL;CHARSET=UTF-8;type=WORK,INTERNET:info@mlbflight.com
+TEL;TYPE=WORK,VOICE:3213453194
+ADR;CHARSET=UTF-8;TYPE=WORK:;;1401 General Aviation Drive;Melbourne;FL;;
+URL;type=WORK;CHARSET=UTF-8:www.flyrocketair.com
+REV:2026-05-02T15:20:44.292Z
 END:VCARD`;
 
   const vcardBtn = document.getElementById("vcardBtn");
-  const modal = document.getElementById("formModal");
-  const closeModal = document.getElementById("closeModal");
 
   const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
-  let vcardUrl;
-
-  function prepareVcard() {
+  if (isIOS) {
+    // iOS: open directly so it prompts "Add to Contacts"
     const blob = new Blob([vcardData], { type: "text/vcard" });
-    vcardUrl = URL.createObjectURL(blob);
+    const url = URL.createObjectURL(blob);
+    vcardBtn.href = url;
+    vcardBtn.target = "_blank";
+  } else {
+    // Android/Desktop: download file
+    const blob = new Blob([vcardData], { type: "text/vcard" });
+    const url = URL.createObjectURL(blob);
+    vcardBtn.href = url;
+    vcardBtn.download = "first-last.vcf";
   }
-
-  function triggerVcardDownload() {
-    const link = document.createElement("a");
-    link.href = vcardUrl;
-
-    if (!isIOS) {
-      link.download = "nic-clayton.vcf";
-    }
-
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  }
-
-  // Open modal instead of downloading
-  vcardBtn.addEventListener("click", function(e) {
-    e.preventDefault();
-    modal.style.display = "flex";
-  });
-
-  closeModal.addEventListener("click", () => {
-    modal.style.display = "none";
-  });
-
-  // INIT FORMSPREE
-  window.formspree = window.formspree || function () {
-    (formspree.q = formspree.q || []).push(arguments);
-  };
-
-  formspree('initForm', {
-    formElement: '#lead-form',
-    formId: 'mdabagrb',
-    onSuccess: function() {
-      triggerVcardDownload();
-      modal.style.display = "none";
-    }
-  });
-
-  prepareVcard();
 </script>
 
-<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
-
-<!-- FORM MODAL -->
-<div id="formModal" class="modal">
-  <div class="modal-content">
-
-    <div data-fs-success class="success-msg"></div>
-    <div data-fs-error class="error-msg"></div>
-
-    <form id="lead-form">
-      <h3>Before you save my contact</h3>
-      <p style="font-size:14px; color:#6b7280; margin-bottom:15px;">
-        Drop your info and I’ll reach out personally 👇
-      </p>
-
-      <input type="text" name="name" placeholder="Your Name" required data-fs-field>
-      <span data-fs-error="name"></span>
-
-      <input type="email" name="email" placeholder="Email Address" required data-fs-field>
-      <span data-fs-error="email"></span>
-
-      <input type="tel" name="phone" placeholder="Phone Number" data-fs-field>
-      <span data-fs-error="phone"></span>
-
-      <textarea name="message" placeholder="What are you interested in?" data-fs-field></textarea>
-      <span data-fs-error="message"></span>
-
-      <button type="submit" data-fs-submit-btn>Submit & Save Contact</button>
-    </form>
-
-    <button id="closeModal" class="close-btn">✕</button>
-
-  </div>
-</div>
 </body>
 </html>
