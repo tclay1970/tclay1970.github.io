@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 <title>Rocket Air Instructor Card</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link
+  href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap"
+  rel="stylesheet"
+/>
 
 <style>
+
   body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
@@ -24,6 +29,7 @@
   }
 
   /* HEADER */
+
   .header {
     position: relative;
     background: #012D68;
@@ -78,6 +84,7 @@
   }
 
   /* PROFILE */
+
   .profile {
     position: absolute;
     top: 245px;
@@ -94,6 +101,7 @@
   }
 
   /* CONTENT */
+
   .content {
     padding: 10px 24px 24px;
     color: #374151;
@@ -107,6 +115,7 @@
   }
 
   /* CONTACT */
+
   .contact {
     background: #f1f5f9;
     padding: 20px;
@@ -160,7 +169,8 @@
     color: inherit;
   }
 
-  /* VCARD BUTTON */
+  /* SAVE CONTACT BUTTON */
+
   .vcard-container {
     padding: 25px 20px 40px;
     text-align: center;
@@ -178,88 +188,58 @@
     box-shadow: 0 10px 20px rgba(0,0,0,0.15);
     border: none;
     cursor: pointer;
+    width: 100%;
   }
 
   /* MODAL */
+
   .modal {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0,0,0,0.7);
     z-index: 999;
     align-items: center;
     justify-content: center;
     padding: 20px;
+    box-sizing: border-box;
   }
 
   .modal-content {
     background: white;
     width: 100%;
-    max-width: 400px;
-    border-radius: 16px;
-    padding: 24px;
-    box-sizing: border-box;
+    max-width: 420px;
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
   }
 
-  .modal-title {
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    color: #012D68;
-  }
-
-  .form-group {
-    margin-bottom: 16px;
-  }
-
-  .form-group label {
-    display: block;
-    margin-bottom: 6px;
-    font-size: 14px;
-    font-weight: 600;
-  }
-
-  .form-group input,
-  .form-group textarea {
-    width: 100%;
-    padding: 12px;
-    border-radius: 10px;
-    border: 1px solid #d1d5db;
-    font-family: inherit;
-    font-size: 15px;
-    box-sizing: border-box;
-  }
-
-  .form-group textarea {
-    resize: vertical;
-    min-height: 90px;
-  }
-
-  .modal-actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-  }
-
-  .submit-btn,
-  .cancel-btn {
-    flex: 1;
+  .close-modal {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    z-index: 10;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
     border: none;
-    border-radius: 10px;
-    padding: 13px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-  }
-
-  .submit-btn {
-    background: #012D68;
+    background: rgba(0,0,0,0.65);
     color: white;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .cancel-btn {
-    background: #e5e7eb;
+  .flycore-frame {
+    width: 100%;
+    height: 85vh;
+    border: 0;
+    display: block;
   }
+
 </style>
 </head>
 
@@ -288,9 +268,11 @@
   </div>
 
   <div class="content">
+
     <div class="description">
       Providing industry leading flight instruction to aspiring career and recreational aviators.
     </div>
+
   </div>
 
   <div class="contact">
@@ -298,6 +280,7 @@
     <!-- Enrollment -->
     <a href="mailto:info@mlbflight.com">
       <div class="contact-item">
+
         <div class="icon">
           <svg viewBox="0 0 24 24">
             <path d="M4 4h16v16H4z"/>
@@ -309,12 +292,15 @@
           info@mlbflight.com<br>
           <span class="label">Enrollment Inquiries</span>
         </div>
+
       </div>
     </a>
 
     <!-- Instructor Email -->
     <a id="directEmailLink">
+
       <div class="contact-item">
+
         <div class="icon">
           <svg viewBox="0 0 24 24">
             <path d="M4 4h16v16H4z"/>
@@ -326,12 +312,15 @@
           <span id="directEmailText"></span><br>
           <span class="label">Questions? Contact Me Directly!</span>
         </div>
+
       </div>
     </a>
 
     <!-- Phone -->
     <a href="tel:+13213453194">
+
       <div class="contact-item">
+
         <div class="icon">
           <svg viewBox="0 0 24 24">
             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.11 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13 1.21.38 2.39.74 3.53a2 2 0 0 1-.45 2.11L8.09 10.91a16 16 0 0 0 6 6l1.55-1.31a2 2 0 0 1 2.11-.45c1.14.36 2.32.61 3.53.74A2 2 0 0 1 22 16.92z"/>
@@ -342,12 +331,15 @@
           (321) 345-3194 <span class="ext">ext. 2</span><br>
           <span class="label">Book Your Discovery Flight Now!</span>
         </div>
+
       </div>
     </a>
 
     <!-- Website -->
     <a href="https://www.flyrocketair.com" target="_blank">
+
       <div class="contact-item">
+
         <div class="icon">
           <svg viewBox="0 0 24 24">
             <circle cx="12" cy="12" r="10"/>
@@ -359,12 +351,15 @@
         <div class="contact-text">
           Visit Our Website
         </div>
+
       </div>
     </a>
 
     <!-- Instagram -->
     <a href="https://instagram.com/mlbflight" target="_blank">
+
       <div class="contact-item">
+
         <div class="icon">
           <svg viewBox="0 0 24 24">
             <rect x="2" y="2" width="20" height="20" rx="5"/>
@@ -376,12 +371,15 @@
         <div class="contact-text">
           @mlbflight
         </div>
+
       </div>
     </a>
 
     <!-- Facebook -->
     <a href="https://facebook.com/MLBFlightTraining" target="_blank">
+
       <div class="contact-item">
+
         <div class="icon">
           <svg viewBox="0 0 24 24">
             <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
@@ -391,12 +389,15 @@
         <div class="contact-text">
           MLBFlightTraining
         </div>
+
       </div>
     </a>
 
     <!-- Review -->
     <a href="https://g.page/r/CRQoLxiZ1dOKEAI/review" target="_blank">
+
       <div class="contact-item">
+
         <div class="icon">
           <svg viewBox="0 0 24 24">
             <polygon points="12 2 15 9 22 9 16.5 13.5 18 21 12 17 6 21 7.5 13.5 2 9 9 9"/>
@@ -406,12 +407,15 @@
         <div class="contact-text">
           Leave a Review!
         </div>
+
       </div>
     </a>
 
     <!-- Address -->
     <a href="https://www.google.com/maps?q=1401+General+Aviation+Drive+Melbourne+FL" target="_blank">
+
       <div class="contact-item">
+
         <div class="icon">
           <svg viewBox="0 0 24 24">
             <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/>
@@ -423,26 +427,40 @@
           1401 General Aviation Drive<br>
           Melbourne, FL
         </div>
+
       </div>
     </a>
 
   </div>
 
-  <!-- FLYCORE EMBED -->
+  <!-- SAVE CONTACT BUTTON -->
+
   <div class="vcard-container">
 
-  <iframe
-    src="https://app.getflycore.com/form/cmouftern0003h9695lo44sf4"
-    style="
-      border:0;
-      width:100%;
-      height:1000px;
-      border-radius:16px;
-      background:white;
-    ">
-  </iframe>
+    <button id="vcardBtn" class="vcard-btn">
+      Save Contact
+    </button>
+
+  </div>
 
 </div>
+
+<!-- FLYCORE MODAL -->
+
+<div class="modal" id="contactModal">
+
+  <div class="modal-content">
+
+    <button class="close-modal" id="closeModal">
+      ×
+    </button>
+
+    <iframe
+      class="flycore-frame"
+      src="https://app.getflycore.com/form/cmouftern0003h9695lo44sf4">
+    </iframe>
+
+  </div>
 
 </div>
 
@@ -450,11 +468,10 @@
 
   // =========================================
   // GET INSTRUCTOR FROM URL
-  // Example:
-  // instructor.html?instructor=nclayton
   // =========================================
 
-  const params = new URLSearchParams(window.location.search);
+  const params =
+    new URLSearchParams(window.location.search);
 
   const instructorFile =
     params.get("instructor");
@@ -505,100 +522,50 @@
 
       });
 
-      // VCARD
-      setupVCard(instructor);
-
     })
     .catch(error => {
-      console.error("Instructor JSON failed to load:", error);
+
+      console.error(
+        "Instructor JSON failed to load:",
+        error
+      );
+
     });
 
   // =========================================
-  // VCARD
+  // MODAL
   // =========================================
 
-  function setupVCard(instructor) {
+  const vcardBtn =
+    document.getElementById("vcardBtn");
 
-    contactForm.addEventListener("submit", (e) => {
+  const modal =
+    document.getElementById("contactModal");
 
-      e.preventDefault();
+  const closeModal =
+    document.getElementById("closeModal");
 
-      const userName =
-        document.getElementById("userName").value;
+  vcardBtn.addEventListener("click", () => {
 
-      const userEmail =
-        document.getElementById("userEmail").value;
+    modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
 
-      const userPhone =
-        document.getElementById("userPhone").value;
+  });
 
-      const userMessage =
-        document.getElementById("userMessage").value;
+  closeModal.addEventListener("click", closeModalFunction);
 
-      const nameParts =
-        instructor.name.split(" ");
+  modal.addEventListener("click", (e) => {
 
-      const firstName =
-        nameParts[0];
+    if (e.target === modal) {
+      closeModalFunction();
+    }
 
-      const lastName =
-        nameParts.slice(1).join(" ");
+  });
 
-      const vcardData =
-`BEGIN:VCARD
-VERSION:3.0
-FN:${instructor.name}
-N:${lastName};${firstName};;;
-ORG:Rocket Air Flight Academy
-EMAIL:${instructor.email}
-EMAIL:info@mlbflight.com
-TEL:3213453194
-URL:https://www.flyrocketair.com
-ADR:;;1401 General Aviation Drive;Melbourne;FL;;
-END:VCARD`;
+  function closeModalFunction() {
 
-      const blob =
-        new Blob([vcardData], {
-          type: "text/vcard"
-        });
-
-      const url =
-        URL.createObjectURL(blob);
-
-      const tempLink =
-        document.createElement("a");
-
-      const isIOS =
-        /iPad|iPhone|iPod/.test(navigator.userAgent)
-        && !window.MSStream;
-
-      if (isIOS) {
-
-        tempLink.href = url;
-        tempLink.target = "_blank";
-
-      } else {
-
-        tempLink.href = url;
-
-        tempLink.download =
-          `${instructor.name.toLowerCase().replace(/\s+/g, "-")}.vcf`;
-
-      }
-
-      document.body.appendChild(tempLink);
-
-      tempLink.click();
-
-      document.body.removeChild(tempLink);
-
-      URL.revokeObjectURL(url);
-
-      modal.style.display = "none";
-
-      contactForm.reset();
-
-    });
+    modal.style.display = "none";
+    document.body.style.overflow = "auto";
 
   }
 
