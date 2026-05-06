@@ -454,7 +454,7 @@
       </div>
 
       <div class="form-group">
-        <label>Email</label>
+        <label>Email Address</label>
         <input type="email" id="userEmail" required>
       </div>
 
@@ -464,7 +464,7 @@
       </div>
 
       <div class="form-group">
-        <label>Brief Message</label>
+        <label>What training are you interested in?</label>
         <textarea id="userMessage" required></textarea>
       </div>
 
@@ -475,7 +475,7 @@
         </button>
 
         <button type="submit" class="submit-btn">
-          Submit & Save
+          Save & Submit
         </button>
 
       </div>
@@ -619,14 +619,12 @@
 VERSION:3.0
 FN:${instructor.name}
 N:${lastName};${firstName};;;
-TITLE:${instructor.title}
 ORG:Rocket Air Flight Academy
 EMAIL:${instructor.email}
 EMAIL:info@mlbflight.com
 TEL:3213453194
 URL:https://www.flyrocketair.com
 ADR:;;1401 General Aviation Drive;Melbourne;FL;;
-NOTE:Lead Submitted By ${userName} | ${userEmail} | ${userPhone} | ${userMessage}
 END:VCARD`;
 
       const blob =
