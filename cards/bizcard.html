@@ -491,13 +491,13 @@
   // =========================================
   // GET INSTRUCTOR FROM URL
   // Example:
-  // instructor.html?instructor=nic
+  // instructor.html?instructor=nclayton
   // =========================================
 
   const params = new URLSearchParams(window.location.search);
 
   const instructorFile =
-    params.get("instructor") || "nic";
+    params.get("instructor");
 
   // =========================================
   // LOAD JSON
