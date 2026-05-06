@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Flight Instructor Card</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Rocket Air Instructor Card</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -34,7 +35,6 @@
     overflow: hidden;
   }
 
-  /* NEW SIDE IMAGE */
   .side-image {
     position: absolute;
     top: 0;
@@ -70,7 +70,7 @@
   }
 
   .badge {
-    background: rgba(255, 255, 255, 0.18);
+    background: rgba(255,255,255,0.18);
     padding: 3px 7px;
     border-radius: 5px;
     font-size: 11px;
@@ -79,7 +79,6 @@
 
   .role {
     font-size: 20px;
-    font-style: normal;
   }
 
   /* PROFILE */
@@ -134,6 +133,7 @@
     align-items: center;
     justify-content: center;
     margin-right: 15px;
+    flex-shrink: 0;
   }
 
   .icon svg {
@@ -166,7 +166,7 @@
     color: inherit;
   }
 
-  /* VCARD BUTTON */
+  /* SAVE BUTTON */
   .vcard-container {
     padding: 25px 20px 40px;
     text-align: center;
@@ -184,15 +184,17 @@
     box-shadow: 0 10px 20px rgba(0,0,0,0.15);
     cursor: pointer;
     border: none;
+    width: 100%;
+    max-width: 320px;
   }
 
   /* MODAL */
   .modal {
     display: none;
     position: fixed;
-    z-index: 999;
     inset: 0;
     background: rgba(0,0,0,0.55);
+    z-index: 999;
     align-items: center;
     justify-content: center;
     padding: 20px;
@@ -205,25 +207,13 @@
     border-radius: 16px;
     padding: 24px;
     box-sizing: border-box;
-    animation: fadeIn 0.2s ease;
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
   }
 
   .modal-title {
     font-size: 24px;
     font-weight: 700;
-    margin-bottom: 20px;
     color: #012D68;
+    margin-bottom: 20px;
   }
 
   .form-group {
@@ -235,23 +225,22 @@
     margin-bottom: 6px;
     font-size: 14px;
     font-weight: 600;
-    color: #374151;
   }
 
   .form-group input,
   .form-group textarea {
     width: 100%;
-    padding: 12px;
+    box-sizing: border-box;
     border: 1px solid #d1d5db;
     border-radius: 10px;
+    padding: 12px;
     font-size: 15px;
     font-family: inherit;
-    box-sizing: border-box;
   }
 
   .form-group textarea {
-    resize: vertical;
     min-height: 90px;
+    resize: vertical;
   }
 
   .modal-actions {
@@ -287,158 +276,174 @@
 
 <div class="container">
 
+  <!-- HEADER -->
   <div class="header">
 
     <div class="side-image">
-      <img src="../images/logos/photostrip.png" alt="Aircraft or Instructor Action Shot">
+      <img id="sideImage" src="" alt="">
     </div>
 
-    <img class="logo" src="../images/logos/RA-FA WHITE.png" alt="Flight School Logo">
+    <img class="logo" id="logoImage" src="" alt="Rocket Air Logo">
 
-    <div class="name">Nic Clayton</div>
+    <div class="name" id="instructorName"></div>
 
-    <div class="certs">
-      <div class="badge">CFI</div>
-      <div class="badge">CFII</div>
-      <div class="badge">MEI</div>
-      <div class="badge">Gold Seal</div>
-    </div>
+    <div class="certs" id="badgesContainer"></div>
 
-    <div class="role">Assistant Chief Flight Instructor</div>
+    <div class="role" id="instructorTitle"></div>
+
   </div>
 
+  <!-- PROFILE -->
   <div class="profile">
-    <img src="../images/instructors/nclayton.jpg" alt="Instructor Profile">
+    <img id="profileImage" src="" alt="">
   </div>
 
+  <!-- CONTENT -->
   <div class="content">
     <div class="description">
       Providing industry leading flight instruction to aspiring career and recreational aviators.
     </div>
   </div>
 
-<div class="contact">
+  <!-- CONTACT -->
+  <div class="contact">
 
-  <a href="mailto:info@mlbflight.com">
-    <div class="contact-item">
-      <div class="icon">
-        <svg viewBox="0 0 24 24">
-          <path d="M4 4h16v16H4z"/>
-          <path d="M4 7l8 5 8-5"/>
-        </svg>
-      </div>
-      <div class="contact-text">
-        info@mlbflight.com<br>
-        <span class="label">Enrollment Inquiries</span>
-      </div>
-    </div>
-  </a>
+    <!-- Enrollment -->
+    <a href="mailto:info@mlbflight.com">
+      <div class="contact-item">
+        <div class="icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M4 4h16v16H4z"/>
+            <path d="M4 7l8 5 8-5"/>
+          </svg>
+        </div>
 
-  <a href="mailto:nicolas@mlbflight.com">
-    <div class="contact-item">
-      <div class="icon">
-        <svg viewBox="0 0 24 24">
-          <path d="M4 4h16v16H4z"/>
-          <path d="M4 7l8 5 8-5"/>
-        </svg>
+        <div class="contact-text">
+          info@mlbflight.com<br>
+          <span class="label">Enrollment Inquiries</span>
+        </div>
       </div>
-      <div class="contact-text">
-        nicolas@mlbflight.com<br>
-        <span class="label">Questions? Contact Me Directly!</span>
-      </div>
-    </div>
-  </a>
+    </a>
 
-  <a href="tel:+13213453194">
-    <div class="contact-item">
-      <div class="icon">
-        <svg viewBox="0 0 24 24">
-          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.11 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13 1.21.38 2.39.74 3.53a2 2 0 0 1-.45 2.11L8.09 10.91a16 16 0 0 0 6 6l1.55-1.31a2 2 0 0 1 2.11-.45c1.14.36 2.32.61 3.53.74A2 2 0 0 1 22 16.92z"/>
-        </svg>
-      </div>
-      <div class="contact-text">
-        (321) 345-3194 <span class="ext">ext. 2</span><br>
-        <span class="label">Book Your Discovery Flight Now!</span>
-      </div>
-    </div>
-  </a>
+    <!-- Direct Instructor Email -->
+    <a id="directEmailLink" href="#">
+      <div class="contact-item">
+        <div class="icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M4 4h16v16H4z"/>
+            <path d="M4 7l8 5 8-5"/>
+          </svg>
+        </div>
 
-  <a href="https://www.flyrocketair.com" target="_blank">
-    <div class="contact-item">
-      <div class="icon">
-        <svg viewBox="0 0 24 24">
-          <circle cx="12" cy="12" r="10"/>
-          <path d="M2 12h20"/>
-          <path d="M12 2a15 15 0 0 1 0 20a15 15 0 0 1 0-20"/>
-        </svg>
+        <div class="contact-text">
+          <span id="directEmailText"></span><br>
+          <span class="label">Questions? Contact Me Directly!</span>
+        </div>
       </div>
-      <div class="contact-text">
-        Visit Our Website
-      </div>
-    </div>
-  </a>
+    </a>
 
-  <a href="https://instagram.com/mlbflight" target="_blank">
-    <div class="contact-item">
-      <div class="icon">
-        <svg viewBox="0 0 24 24">
-          <rect x="2" y="2" width="20" height="20" rx="5"/>
-          <circle cx="12" cy="12" r="4"/>
-          <circle cx="17.5" cy="6.5" r="1"/>
-        </svg>
-      </div>
-      <div class="contact-text">
-        @mlbflight
-      </div>
-    </div>
-  </a>
+    <!-- Phone -->
+    <a href="tel:+13213453194">
+      <div class="contact-item">
+        <div class="icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.11 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13 1.21.38 2.39.74 3.53a2 2 0 0 1-.45 2.11L8.09 10.91a16 16 0 0 0 6 6l1.55-1.31a2 2 0 0 1 2.11-.45c1.14.36 2.32.61 3.53.74A2 2 0 0 1 22 16.92z"/>
+          </svg>
+        </div>
 
-  <a href="https://facebook.com/MLBFlightTraining" target="_blank">
-    <div class="contact-item">
-      <div class="icon">
-        <svg viewBox="0 0 24 24">
-          <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-        </svg>
+        <div class="contact-text">
+          (321) 345-3194 <span class="ext">ext. 2</span><br>
+          <span class="label">Book Your Discovery Flight Now!</span>
+        </div>
       </div>
-      <div class="contact-text">
-        MLBFlightTraining
-      </div>
-    </div>
-  </a>
+    </a>
 
-  <a href="https://g.page/r/CRQoLxiZ1dOKEAI/review" target="_blank">
-    <div class="contact-item">
-      <div class="icon">
-        <svg viewBox="0 0 24 24">
-          <polygon points="12 2 15 9 22 9 16.5 13.5 18 21 12 17 6 21 7.5 13.5 2 9 9 9"/>
-        </svg>
-      </div>
-      <div class="contact-text">
-        Leave a Review!
-      </div>
-    </div>
-  </a>
+    <!-- Website -->
+    <a href="https://www.flyrocketair.com" target="_blank">
+      <div class="contact-item">
+        <div class="icon">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M2 12h20"/>
+            <path d="M12 2a15 15 0 0 1 0 20a15 15 0 0 1 0-20"/>
+          </svg>
+        </div>
 
-  <a href="https://www.google.com/maps?q=1401+General+Aviation+Drive+Melbourne+FL" target="_blank">
-    <div class="contact-item">
-      <div class="icon">
-        <svg viewBox="0 0 24 24">
-          <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/>
-          <circle cx="12" cy="10" r="3"/>
-        </svg>
+        <div class="contact-text">
+          Visit Our Website
+        </div>
       </div>
-      <div class="contact-text">
-        1401 General Aviation Drive<br>
-        Melbourne, FL
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://instagram.com/mlbflight" target="_blank">
+      <div class="contact-item">
+        <div class="icon">
+          <svg viewBox="0 0 24 24">
+            <rect x="2" y="2" width="20" height="20" rx="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="1"/>
+          </svg>
+        </div>
+
+        <div class="contact-text">
+          @mlbflight
+        </div>
       </div>
-    </div>
-  </a>
+    </a>
 
-</div>
+    <!-- Facebook -->
+    <a href="https://facebook.com/MLBFlightTraining" target="_blank">
+      <div class="contact-item">
+        <div class="icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+        </div>
 
-  <!-- VCARD BUTTON -->
+        <div class="contact-text">
+          MLBFlightTraining
+        </div>
+      </div>
+    </a>
+
+    <!-- Review -->
+    <a href="https://g.page/r/CRQoLxiZ1dOKEAI/review" target="_blank">
+      <div class="contact-item">
+        <div class="icon">
+          <svg viewBox="0 0 24 24">
+            <polygon points="12 2 15 9 22 9 16.5 13.5 18 21 12 17 6 21 7.5 13.5 2 9 9 9"/>
+          </svg>
+        </div>
+
+        <div class="contact-text">
+          Leave a Review!
+        </div>
+      </div>
+    </a>
+
+    <!-- Address -->
+    <a href="https://www.google.com/maps?q=1401+General+Aviation+Drive+Melbourne+FL" target="_blank">
+      <div class="contact-item">
+        <div class="icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+
+        <div class="contact-text">
+          1401 General Aviation Drive<br>
+          Melbourne, FL
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- SAVE CONTACT BUTTON -->
   <div class="vcard-container">
-    <button id="vcardBtn" class="vcard-btn">
+    <button class="vcard-btn" id="vcardBtn">
       Save Contact
     </button>
   </div>
@@ -447,6 +452,7 @@
 
 <!-- MODAL -->
 <div class="modal" id="contactModal">
+
   <div class="modal-content">
 
     <div class="modal-title">
@@ -488,98 +494,223 @@
     </form>
 
   </div>
+
 </div>
 
 <script>
-  const vcardBtn = document.getElementById("vcardBtn");
-  const modal = document.getElementById("contactModal");
-  const cancelBtn = document.getElementById("cancelBtn");
-  const contactForm = document.getElementById("contactForm");
 
-  // OPEN MODAL
+  /*
+    ============================================
+    ONLY CHANGE THIS OBJECT FOR EACH INSTRUCTOR
+    ============================================
+  */
+
+  const instructor = {
+    firstName: "Nic",
+    lastName: "Clayton",
+
+    title: "Assistant Chief Flight Instructor",
+
+    directEmail: "nicolas@mlbflight.com",
+
+    profileImage: "../images/instructors/nclayton.jpg",
+
+    badges: [
+      "CFI",
+      "CFII",
+      "MEI",
+      "Gold Seal"
+    ]
+  };
+
+  /*
+    ============================================
+    STATIC COMPANY DATA
+    ============================================
+  */
+
+  const company = {
+    name: "Rocket Air Flight Academy",
+
+    logo: "../images/logos/RA-FA WHITE.png",
+
+    sideImage: "../images/logos/photostrip.png",
+
+    enrollmentEmail: "info@mlbflight.com",
+
+    phone: "3213453194",
+
+    website: "https://www.flyrocketair.com"
+  };
+
+  /*
+    ============================================
+    PAGE POPULATION
+    ============================================
+  */
+
+  const fullName =
+    `${instructor.firstName} ${instructor.lastName}`;
+
+  document.getElementById("instructorName").textContent =
+    fullName;
+
+  document.getElementById("instructorTitle").textContent =
+    instructor.title;
+
+  document.getElementById("profileImage").src =
+    instructor.profileImage;
+
+  document.getElementById("profileImage").alt =
+    fullName;
+
+  document.getElementById("logoImage").src =
+    company.logo;
+
+  document.getElementById("sideImage").src =
+    company.sideImage;
+
+  // DIRECT EMAIL
+  document.getElementById("directEmailText").textContent =
+    instructor.directEmail;
+
+  document.getElementById("directEmailLink").href =
+    `mailto:${instructor.directEmail}`;
+
+  // BADGES
+  const badgesContainer =
+    document.getElementById("badgesContainer");
+
+  instructor.badges.forEach((badge) => {
+    const div = document.createElement("div");
+
+    div.className = "badge";
+
+    div.textContent = badge;
+
+    badgesContainer.appendChild(div);
+  });
+
+  /*
+    ============================================
+    MODAL
+    ============================================
+  */
+
+  const vcardBtn =
+    document.getElementById("vcardBtn");
+
+  const modal =
+    document.getElementById("contactModal");
+
+  const cancelBtn =
+    document.getElementById("cancelBtn");
+
+  const contactForm =
+    document.getElementById("contactForm");
+
+  // OPEN
   vcardBtn.addEventListener("click", () => {
     modal.style.display = "flex";
   });
 
-  // CLOSE MODAL
+  // CLOSE
   cancelBtn.addEventListener("click", () => {
     modal.style.display = "none";
   });
 
-  // CLOSE IF CLICK OUTSIDE
+  // CLICK OUTSIDE
   modal.addEventListener("click", (e) => {
     if (e.target === modal) {
       modal.style.display = "none";
     }
   });
 
-  // SUBMIT FORM + SAVE VCARD
+  /*
+    ============================================
+    FORM SUBMIT + VCARD
+    ============================================
+  */
+
   contactForm.addEventListener("submit", (e) => {
+
     e.preventDefault();
 
-    const name = document.getElementById("userName").value;
-    const email = document.getElementById("userEmail").value;
-    const phone = document.getElementById("userPhone").value;
-    const message = document.getElementById("userMessage").value;
+    const leadName =
+      document.getElementById("userName").value;
 
-    // OPTIONAL:
-    // Send data to backend here if desired
+    const leadEmail =
+      document.getElementById("userEmail").value;
+
+    const leadPhone =
+      document.getElementById("userPhone").value;
+
+    const leadMessage =
+      document.getElementById("userMessage").value;
+
+    // LEAD DATA
     console.log({
-      name,
-      email,
-      phone,
-      message
+      leadName,
+      leadEmail,
+      leadPhone,
+      leadMessage
     });
 
     // VCARD
     const vcardData =
 `BEGIN:VCARD
 VERSION:3.0
-FN;CHARSET=UTF-8:Nic Clayton
-N;CHARSET=UTF-8:Clayton;Nic;;;
-TITLE:Assistant Chief Flight Instructor
-ORG:Rocket Air Flight Academy
-EMAIL;TYPE=WORK,INTERNET:nicolas@mlbflight.com
-EMAIL;TYPE=WORK,INTERNET:info@mlbflight.com
-TEL;TYPE=WORK,VOICE:3213453194
-ADR;TYPE=WORK:;;1401 General Aviation Drive;Melbourne;FL;;
-URL:https://www.flyrocketair.com
-NOTE:Lead Submitted By ${name} | ${email} | ${phone} | ${message}
+FN:${fullName}
+N:${instructor.lastName};${instructor.firstName};;;
+TITLE:${instructor.title}
+ORG:${company.name}
+EMAIL:${instructor.directEmail}
+EMAIL:${company.enrollmentEmail}
+TEL:${company.phone}
+ADR:;;1401 General Aviation Drive;Melbourne;FL;;
+URL:${company.website}
+NOTE:Lead Submitted By ${leadName} | ${leadEmail} | ${leadPhone} | ${leadMessage}
 REV:${new Date().toISOString()}
 END:VCARD`;
 
-    const blob = new Blob([vcardData], {
-      type: "text/vcard"
-    });
+    const blob = new Blob(
+      [vcardData],
+      { type: "text/vcard" }
+    );
 
-    const url = URL.createObjectURL(blob);
+    const url =
+      URL.createObjectURL(blob);
 
     const isIOS =
-      /iPad|iPhone|iPod/.test(navigator.userAgent) &&
-      !window.MSStream;
+      /iPad|iPhone|iPod/.test(navigator.userAgent)
+      && !window.MSStream;
 
-    const tempLink = document.createElement("a");
+    const tempLink =
+      document.createElement("a");
 
     if (isIOS) {
       tempLink.href = url;
       tempLink.target = "_blank";
     } else {
       tempLink.href = url;
-      tempLink.download = "nic-clayton.vcf";
+      tempLink.download =
+        `${instructor.firstName.toLowerCase()}-${instructor.lastName.toLowerCase()}.vcf`;
     }
 
     document.body.appendChild(tempLink);
+
     tempLink.click();
+
     document.body.removeChild(tempLink);
 
     URL.revokeObjectURL(url);
 
-    // CLOSE MODAL
     modal.style.display = "none";
 
-    // RESET FORM
     contactForm.reset();
+
   });
+
 </script>
 
 </body>
