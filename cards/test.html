@@ -467,7 +467,7 @@
       </div>
 
       <div class="form-group">
-        <label>Email</label>
+        <label>Email Address</label>
         <input type="email" id="userEmail" required>
       </div>
 
@@ -477,7 +477,7 @@
       </div>
 
       <div class="form-group">
-        <label>Brief Message</label>
+        <label>What training are you interested in?</label>
         <textarea id="userMessage" required></textarea>
       </div>
 
@@ -487,7 +487,7 @@
         </button>
 
         <button type="submit" class="submit-btn">
-          Submit & Save
+          Save & Submit
         </button>
       </div>
 
@@ -662,14 +662,11 @@
 VERSION:3.0
 FN:${fullName}
 N:${instructor.lastName};${instructor.firstName};;;
-TITLE:${instructor.title}
-ORG:${company.name}
 EMAIL:${instructor.directEmail}
 EMAIL:${company.enrollmentEmail}
 TEL:${company.phone}
 ADR:;;1401 General Aviation Drive;Melbourne;FL;;
 URL:${company.website}
-NOTE:Lead Submitted By ${leadName} | ${leadEmail} | ${leadPhone} | ${leadMessage}
 REV:${new Date().toISOString()}
 END:VCARD`;
 
