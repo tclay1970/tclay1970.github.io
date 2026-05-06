@@ -1,0 +1,11 @@
+{
+  "name": "Jimm McElroy",
+  "title": "Flight Instructor",
+  "email": "jimm@mlbflight.com",
+  "profileImage": "../images/instructors/plukianov.jpg",
+  "badges": [
+    "CFI",
+    "CFII",
+    "MEI",
+  ]
+}
