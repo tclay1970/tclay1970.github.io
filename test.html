@@ -1,21 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Dynamic vCard</title>
+  <title>Import Contact2</title>
 </head>
 <body>
-    <h1>Tap to Add Contact</h1>
-    <p>
-        <a download="contact.vcf" href="data:text/vcard;charset=utf-8,
-BEGIN:VCARD%0A
-VERSION:3.0%0A
-FN:John Doe%0A
-TEL:+1234567890%0A
-EMAIL:john.doe@example.com%0A
-END:VCARD">
-            Download My Contact
-        </a>
-    </p>
+
+<button onclick="downloadVCard()">Add Contact</button>
+
+<script>
+function downloadVCard() {
+
+  const vcard = `BEGIN:VCARD
+VERSION:3.0
+FN:John Doe
+TEL;TYPE=CELL:1234567890
+EMAIL:john@example.com
+END:VCARD`;
+
+  const blob = new Blob([vcard], {
+    type: 'text/vcard'
+  });
+
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'contact.vcf';
+
+  document.body.appendChild(a);
+  a.click();
+
+  document.body.removeChild(a);
+
+  URL.revokeObjectURL(url);
+}
+</script>
+
 </body>
 </html>
