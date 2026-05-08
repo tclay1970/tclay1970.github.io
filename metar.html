@@ -1,21 +1,60 @@
-<a 
-  href="https://metar-taf.com/metar/KMLB"
-  id="metartaf-TBLdCXzC"
-  style="
-    font-size:18px;
-    font-weight:500;
-    color:#000;
-    width:350px;
-    height:278px;
-    display:block;
-  "
->
-  METAR Melbourne Orlando International Airport
-</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>KMLB Weather Display</title>
+
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #012D68;
+        font-family: Arial, sans-serif;
+    }
+
+    .weather-container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2vh;
+        box-sizing: border-box;
+    }
+
+    #metartaf-TBLdCXzC {
+        width: 100%;
+        height: 100%;
+        max-width: 1800px;
+        max-height: 1000px;
+        display: block;
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 0 40px rgba(0,0,0,0.35);
+    }
+</style>
+</head>
+
+<body>
+
+<div class="weather-container">
+    <a
+        href="https://metar-taf.com/metar/KMLB"
+        id="metartaf-TBLdCXzC">
+    </a>
+</div>
 
 <script
-  async
-  defer
-  crossorigin="anonymous"
-  src="https://metar-taf.com/embed-js/KMLB?bg_color=012D68&layout=landscape&visibility=mi&qnh=inHg&rh=dp&target=TBLdCXzC">
+    async
+    defer
+    crossorigin="anonymous"
+    src="https://metar-taf.com/embed-js/KMLB?bg_color=012D68&layout=landscape&visibility=mi&qnh=inHg&rh=dp&target=TBLdCXzC">
 </script>
+
+</body>
+</html>
