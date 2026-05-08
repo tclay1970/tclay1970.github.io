@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>KMLB Weather Display</title>
 
@@ -17,36 +17,50 @@
         font-family: Arial, sans-serif;
     }
 
-    .weather-container {
+    .wrapper {
         width: 100vw;
         height: 100vh;
         display: flex;
-        align-items: center;
         justify-content: center;
-        padding: 2vh;
+        align-items: center;
+        padding: 20px;
         box-sizing: border-box;
     }
 
-    #metartaf-TBLdCXzC {
-        width: 100%;
-        height: 100%;
-        max-width: 1800px;
-        max-height: 1000px;
-        display: block;
-        border-radius: 24px;
-        overflow: hidden;
-        box-shadow: 0 0 40px rgba(0,0,0,0.35);
+    /* Scale the widget up for TV viewing */
+    .widget-scale {
+        transform: scale(2.2);
+        transform-origin: center center;
+    }
+
+    @media (max-width: 1400px) {
+        .widget-scale {
+            transform: scale(1.6);
+        }
     }
 </style>
 </head>
 
 <body>
 
-<div class="weather-container">
-    <a
-        href="https://metar-taf.com/metar/KMLB"
-        id="metartaf-TBLdCXzC">
-    </a>
+<div class="wrapper">
+    <div class="widget-scale">
+
+        <a
+            href="https://metar-taf.com/metar/KMLB"
+            id="metartaf-TBLdCXzC"
+            style="
+                font-size:18px;
+                font-weight:500;
+                color:#000;
+                width:350px;
+                height:278px;
+                display:block
+            ">
+            METAR Melbourne Orlando International Airport
+        </a>
+
+    </div>
 </div>
 
 <script
