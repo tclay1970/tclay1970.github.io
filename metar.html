@@ -1,87 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Weather Grid</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>METAR Dashboard</title>
 
 <style>
-  body {
-    margin: 0;
-    padding: 20px;
-    background: #0b1728;
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-  }
+    body {
+        margin: 0;
+        padding: 20px;
+        background: #08111f;
+        font-family: Arial, sans-serif;
+    }
 
-  .weather-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 350px);
-    grid-template-rows: repeat(2, 278px);
-    gap: 20px;
-  }
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 350px);
+        gap: 20px;
+        justify-content: center;
+    }
 
-  .weather-card {
-    width: 350px;
-    height: 278px;
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.35);
-  }
+    .widget {
+        width: 350px;
+        height: 278px;
+    }
 </style>
 </head>
 
 <body>
 
-<div class="weather-grid">
+<div class="grid">
 
-  <div class="weather-card">
-    <a href="https://metar-taf.com/metar/KCOI?station_id=KCOF"
-       id="metartaf-1"
-       style="font-size:18px; font-weight:500; color:#000; width:350px; height:278px; display:block">
-       METAR Merritt Island Airport
-    </a>
-  </div>
+    <div class="widget">
+        <a id="wx1"></a>
+    </div>
 
-  <div class="weather-card">
-    <a href="https://metar-taf.com/metar/KMLB?station_id=KMLB"
-       id="metartaf-2"
-       style="font-size:18px; font-weight:500; color:#000; width:350px; height:278px; display:block">
-       METAR Melbourne International
-    </a>
-  </div>
+    <div class="widget">
+        <a id="wx2"></a>
+    </div>
 
-  <div class="weather-card">
-    <a href="https://metar-taf.com/metar/KDAB?station_id=KDAB"
-       id="metartaf-3"
-       style="font-size:18px; font-weight:500; color:#000; width:350px; height:278px; display:block">
-       METAR Daytona Beach
-    </a>
-  </div>
+    <div class="widget">
+        <a id="wx3"></a>
+    </div>
 
-  <div class="weather-card">
-    <a href="https://metar-taf.com/metar/KORL?station_id=KORL"
-       id="metartaf-4"
-       style="font-size:18px; font-weight:500; color:#000; width:350px; height:278px; display:block">
-       METAR Orlando Executive
-    </a>
-  </div>
+    <div class="widget">
+        <a id="wx4"></a>
+    </div>
 
 </div>
 
-<!-- Widget Scripts -->
 <script async defer crossorigin="anonymous"
-src="https://metar-taf.com/embed-js/KCOI?bg_color=012D68&station_id=KCOF&layout=landscape&visibility=mi&qnh=inHg&rh=rh&target=metartaf-1"></script>
+src="https://metar-taf.com/embed-js/KCOI?station_id=KCOF&layout=landscape&bg_color=012D68&visibility=mi&qnh=inHg&rh=rh&target=wx1">
+</script>
 
 <script async defer crossorigin="anonymous"
-src="https://metar-taf.com/embed-js/KMLB?bg_color=012D68&station_id=KMLB&layout=landscape&visibility=mi&qnh=inHg&rh=rh&target=metartaf-2"></script>
+src="https://metar-taf.com/embed-js/KMLB?station_id=KMLB&layout=landscape&bg_color=012D68&visibility=mi&qnh=inHg&rh=rh&target=wx2">
+</script>
 
 <script async defer crossorigin="anonymous"
-src="https://metar-taf.com/embed-js/KDAB?bg_color=012D68&station_id=KDAB&layout=landscape&visibility=mi&qnh=inHg&rh=rh&target=metartaf-3"></script>
+src="https://metar-taf.com/embed-js/KDAB?station_id=KDAB&layout=landscape&bg_color=012D68&visibility=mi&qnh=inHg&rh=rh&target=wx3">
+</script>
 
 <script async defer crossorigin="anonymous"
-src="https://metar-taf.com/embed-js/KORL?bg_color=012D68&station_id=KORL&layout=landscape&visibility=mi&qnh=inHg&rh=rh&target=metartaf-4"></script>
+src="https://metar-taf.com/embed-js/KORL?station_id=KORL&layout=landscape&bg_color=012D68&visibility=mi&qnh=inHg&rh=rh&target=wx4">
+</script>
 
 </body>
 </html>
