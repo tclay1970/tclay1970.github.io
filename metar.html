@@ -1,50 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>KMLB Weather Display</title>
+<title>Space Coast Weather</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-    body{
-        margin:0;
-        background:#0b1220;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        height:100vh;
-        overflow:hidden;
-        font-family:Arial,sans-serif;
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 32px;
+    font-family: 'Montserrat', sans-serif;
+    background: #0B172A;
+    color: white;
+  }
+
+  .page-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 32px;
+    letter-spacing: 0.5px;
+  }
+
+  .weather-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 24px;
+    justify-items: center;
+  }
+
+  .weather-card {
+    width: 100%;
+    max-width: 350px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 12px;
+    backdrop-filter: blur(8px);
+  }
+
+  .airport-title {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #D9E7FF;
+  }
+
+  @media (max-width: 768px) {
+    body {
+      padding: 18px;
     }
 
-    .weather-wrap{
-        transform:scale(1.8);
-        transform-origin:center;
+    .page-title {
+      font-size: 1.5rem;
+      margin-bottom: 24px;
     }
+  }
 </style>
-
-<meta http-equiv="refresh" content="300">
-
 </head>
+
 <body>
 
-<div class="weather-wrap">
+<h1 class="page-title">Space Coast Aviation Weather</h1>
 
-<a href="https://metar-taf.com/metar/KMLB"
-id="metartaf-KMLB"
-style="font-size:18px;
-font-weight:500;
-color:#fff;
-width:300px;
-height:435px;
-display:block">
-METAR Melbourne Orlando International Airport
-</a>
+<div class="weather-grid">
 
-<script async defer crossorigin="anonymous"
-src="https://metar-taf.com/embed-js/KMLB?visibility=mi&qnh=inHg&rh=rh&target=metartaf-KMLB">
-</script>
+  <!-- KMLB -->
+  <div class="weather-card">
+    <div class="airport-title">KMLB — Melbourne Orlando Intl</div>
+
+    <a href="https://metar-taf.com/KMLB"
+       id="metartaf-KMLB"
+       style="font-size:18px;font-weight:500;color:#000;width:350px;height:278px;display:block">
+       METAR KMLB
+    </a>
+
+    <script async defer crossorigin="anonymous"
+      src="https://metar-taf.com/embed-js/KMLB?bg_color=012D68&layout=landscape&visibility=mi&qnh=inHg&rh=rh&target=metartaf-KMLB">
+    </script>
+  </div>
+
+  <!-- KTIX -->
+  <div class="weather-card">
+    <div class="airport-title">KTIX — Space Coast Regional</div>
+
+    <a href="https://metar-taf.com/KTIX"
+       id="metartaf-KTIX"
+       style="font-size:18px;font-weight:500;color:#000;width:350px;height:278px;display:block">
+       METAR KTIX
+    </a>
+
+    <script async defer crossorigin="anonymous"
+      src="https://metar-taf.com/embed-js/KTIX?bg_color=012D68&layout=landscape&visibility=mi&qnh=inHg&rh=rh&target=metartaf-KTIX">
+    </script>
+  </div>
+
+  <!-- X59 -->
+  <div class="weather-card">
+    <div class="airport-title">X59 — Valkaria Airport</div>
+
+    <a href="https://metar-taf.com/X59"
+       id="metartaf-X59"
+       style="font-size:18px;font-weight:500;color:#000;width:350px;height:278px;display:block">
+       METAR X59
+    </a>
+
+    <script async defer crossorigin="anonymous"
+      src="https://metar-taf.com/embed-js/X59?bg_color=012D68&layout=landscape&visibility=mi&qnh=inHg&rh=rh&target=metartaf-X59">
+    </script>
+  </div>
+
+  <!-- X26 -->
+  <div class="weather-card">
+    <div class="airport-title">X26 — Sebastian Municipal</div>
+
+    <a href="https://metar-taf.com/X26"
+       id="metartaf-X26"
+       style="font-size:18px;font-weight:500;color:#000;width:350px;height:278px;display:block">
+       METAR X26
+    </a>
+
+    <script async defer crossorigin="anonymous"
+      src="https://metar-taf.com/embed-js/X26?bg_color=012D68&layout=landscape&visibility=mi&qnh=inHg&rh=rh&target=metartaf-X26">
+    </script>
+  </div>
 
 </div>
 
