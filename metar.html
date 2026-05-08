@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>Space Coast Weather</title>
+<title>Space Coast Aviation Weather</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -15,121 +15,115 @@
 
   body {
     margin: 0;
-    padding: 32px;
-    font-family: 'Montserrat', sans-serif;
+    padding: 24px;
     background: #0B172A;
     color: white;
+    font-family: 'Montserrat', sans-serif;
   }
 
-  .page-title {
+  h1 {
     text-align: center;
+    margin-bottom: 30px;
     font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 32px;
-    letter-spacing: 0.5px;
   }
 
-  .weather-grid {
+  .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
     gap: 24px;
     justify-items: center;
   }
 
-  .weather-card {
+  .card {
     width: 100%;
-    max-width: 350px;
+    max-width: 370px;
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 20px;
-    padding: 12px;
-    backdrop-filter: blur(8px);
+    border-radius: 18px;
+    padding: 14px;
   }
 
-  .airport-title {
+  .airport-name {
     text-align: center;
-    font-size: 1rem;
-    font-weight: 600;
     margin-bottom: 12px;
-    color: #D9E7FF;
+    font-weight: 600;
+    color: #DCE7FF;
   }
 
-  @media (max-width: 768px) {
-    body {
-      padding: 18px;
-    }
-
-    .page-title {
-      font-size: 1.5rem;
-      margin-bottom: 24px;
-    }
+  .widget {
+    width: 100%;
+    min-height: 278px;
   }
 </style>
 </head>
 
 <body>
 
-<h1 class="page-title">Space Coast Aviation Weather</h1>
+<h1>Space Coast Aviation Weather</h1>
 
-<div class="weather-grid">
+<div class="grid">
 
   <!-- KMLB -->
-  <div class="weather-card">
-    <div class="airport-title">KMLB — Melbourne Orlando Intl</div>
+  <div class="card">
+    <div class="airport-name">KMLB — Melbourne Orlando Intl</div>
 
-    <a href="https://metar-taf.com/KMLB"
-       id="metartaf-KMLB"
-       style="font-size:18px;font-weight:500;color:#000;width:350px;height:278px;display:block">
-       METAR KMLB
+    <a
+      id="kmlbWidget"
+      class="widget"
+      href="https://metar-taf.com/KMLB">
+      METAR KMLB
     </a>
 
     <script async defer crossorigin="anonymous"
-      src="https://metar-taf.com/embed-js/KMLB?bg_color=012D68&layout=landscape&visibility=mi&qnh=inHg&rh=rh&target=metartaf-KMLB">
+      src="https://metar-taf.com/embed-js/KMLB?layout=landscape&visibility=mi&qnh=inHg&rh=rh&bg_color=012D68&target=kmlbWidget">
     </script>
   </div>
 
   <!-- KTIX -->
-  <div class="weather-card">
-    <div class="airport-title">KTIX — Space Coast Regional</div>
+  <div class="card">
+    <div class="airport-name">KTIX — Space Coast Regional</div>
 
-    <a href="https://metar-taf.com/KTIX"
-       id="metartaf-KTIX"
-       style="font-size:18px;font-weight:500;color:#000;width:350px;height:278px;display:block">
-       METAR KTIX
+    <a
+      id="ktixWidget"
+      class="widget"
+      href="https://metar-taf.com/KTIX">
+      METAR KTIX
     </a>
 
     <script async defer crossorigin="anonymous"
-      src="https://metar-taf.com/embed-js/KTIX?bg_color=012D68&layout=landscape&visibility=mi&qnh=inHg&rh=rh&target=metartaf-KTIX">
+      src="https://metar-taf.com/embed-js/KTIX?layout=landscape&visibility=mi&qnh=inHg&rh=rh&bg_color=012D68&target=ktixWidget">
     </script>
   </div>
 
   <!-- X59 -->
-  <div class="weather-card">
-    <div class="airport-title">X59 — Valkaria Airport</div>
+  <div class="card">
+    <div class="airport-name">X59 — Valkaria Airport</div>
 
-    <a href="https://metar-taf.com/X59"
-       id="metartaf-X59"
-       style="font-size:18px;font-weight:500;color:#000;width:350px;height:278px;display:block">
-       METAR X59
+    <a
+      id="x59Widget"
+      class="widget"
+      href="https://metar-taf.com/X59">
+      METAR X59
     </a>
 
     <script async defer crossorigin="anonymous"
-      src="https://metar-taf.com/embed-js/X59?bg_color=012D68&layout=landscape&visibility=mi&qnh=inHg&rh=rh&target=metartaf-X59">
+      src="https://metar-taf.com/embed-js/X59?layout=landscape&visibility=mi&qnh=inHg&rh=rh&bg_color=012D68&target=x59Widget">
     </script>
   </div>
 
   <!-- X26 -->
-  <div class="weather-card">
-    <div class="airport-title">X26 — Sebastian Municipal</div>
+  <div class="card">
+    <div class="airport-name">X26 — Sebastian Municipal</div>
 
-    <a href="https://metar-taf.com/X26"
-       id="metartaf-X26"
-       style="font-size:18px;font-weight:500;color:#000;width:350px;height:278px;display:block">
-       METAR X26
+    <a
+      id="x26Widget"
+      class="widget"
+      href="https://metar-taf.com/X26">
+      METAR X26
     </a>
 
     <script async defer crossorigin="anonymous"
-      src="https://metar-taf.com/embed-js/X26?bg_color=012D68&layout=landscape&visibility=mi&qnh=inHg&rh=rh&target=metartaf-X26">
+      src="https://metar-taf.com/embed-js/X26?layout=landscape&visibility=mi&qnh=inHg&rh=rh&bg_color=012D68&target=x26Widget">
     </script>
   </div>
 
