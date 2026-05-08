@@ -1,148 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Rocket Air Weather Dashboard</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-    box-sizing:border-box;
-}
-
-body{
-    margin:0;
-    padding:24px;
-    background:#06152b;
-    font-family:'Montserrat',sans-serif;
-    color:white;
-}
-
-h1{
-    text-align:center;
-    color:#b7e3ff;
-    margin-bottom:30px;
-    font-size:42px;
-    font-weight:700;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(2,minmax(320px,1fr));
-    gap:24px;
-    max-width:1400px;
-    margin:0 auto;
-}
-
-.card{
-    background:#0b2347;
-    border-radius:22px;
-    padding:24px;
-    box-shadow:0 10px 28px rgba(0,0,0,.35);
-    border:1px solid rgba(255,255,255,.05);
-    transition:.2s ease;
-}
-
-.card:hover{
-    transform:translateY(-3px);
-}
-
-.station{
-    font-size:34px;
-    font-weight:700;
-    margin-bottom:12px;
-}
-
-.category{
-    display:inline-block;
-    padding:8px 14px;
-    border-radius:999px;
-    font-weight:700;
-    margin-bottom:22px;
-    font-size:15px;
-}
-
-.vfr{
-    background:#00a651;
-}
-
-.mvfr{
-    background:#005bbb;
-}
-
-.ifr{
-    background:#d62828;
-}
-
-.lifr{
-    background:#ff00ff;
-}
-
-.data{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:18px;
-    margin-bottom:20px;
-}
-
-.label{
-    opacity:.7;
-    font-size:13px;
-    margin-bottom:4px;
-}
-
-.value{
-    font-size:24px;
-    font-weight:600;
-}
-
-.raw{
-    margin-top:14px;
-    padding-top:14px;
-    border-top:1px solid rgba(255,255,255,.08);
-    font-family:monospace;
-    font-size:14px;
-    line-height:1.6;
-    opacity:.9;
-    word-break:break-word;
-}
-
-.footer{
-    text-align:center;
-    margin-top:30px;
-    opacity:.5;
-    font-size:13px;
-}
-
-@media(max-width:900px){
-
-    h1{
-        font-size:32px;
-    }
-
-    .grid{
-        grid-template-columns:1fr;
-    }
-
-}
-
-</style>
-</head>
-
-<body>
-
-<h1>Rocket Air Weather Dashboard</h1>
-
-<div class="grid" id="grid"></div>
-
-<div class="footer">
-    Auto-refreshes every 60 seconds
-</div>
-
 <script>
 
 const stations = ["KCOF","KMLB","KDAB","KORL"];
@@ -158,40 +13,25 @@ async function loadWeather() {
         try {
 
             const response = await fetch(
-                `https://aviationweather.gov/api/data/metar?ids=${station}&format=json`
+                `https://avwx.rest/api/metar/${station}?format=json`,
+                {
+                    headers: {
+                        Authorization: "YOUR_API_KEY"
+                    }
+                }
             );
 
-            const data = await response.json();
-
-            if (!data || !data.length) {
-
-                const errorCard = document.createElement("div");
-
-                errorCard.className = "card";
-
-                errorCard.innerHTML = `
-                    <div class="station">${station}</div>
-                    <div class="raw">
-                        No METAR data available.
-                    </div>
-                `;
-
-                grid.appendChild(errorCard);
-
-                continue;
-            }
-
-            const metar = data[0];
+            const metar = await response.json();
 
             const category = (
-                metar.flight_category || "VFR"
+                metar.flight_rules || "VFR"
             ).toLowerCase();
 
-            const windDir = metar.wdir || "VRB";
-            const windSpeed = metar.wspd || "0";
-            const visibility = metar.visib || "--";
-            const temp = metar.temp || "--";
-            const altimeter = metar.altim || "--";
+            const windDir = metar.wind_direction?.value || "VRB";
+            const windSpeed = metar.wind_speed?.value || "0";
+            const visibility = metar.visibility?.value || "--";
+            const temp = metar.temperature?.value || "--";
+            const altimeter = metar.altimeter?.value || "--";
 
             const card = document.createElement("div");
 
@@ -203,7 +43,7 @@ async function loadWeather() {
                 </div>
 
                 <div class="category ${category}">
-                    ${metar.flight_category || "VFR"}
+                    ${metar.flight_rules || "VFR"}
                 </div>
 
                 <div class="data">
@@ -239,7 +79,7 @@ async function loadWeather() {
                 </div>
 
                 <div class="raw">
-                    ${metar.rawOb || ""}
+                    ${metar.raw || ""}
                 </div>
             `;
 
@@ -274,6 +114,3 @@ loadWeather();
 setInterval(loadWeather, 60000);
 
 </script>
-
-</body>
-</html>
