@@ -4,66 +4,183 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>METAR Dashboard</title>
+<title>Rocket Air Weather Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-    body {
-        margin: 0;
-        padding: 20px;
-        background: #08111f;
-        font-family: Arial, sans-serif;
-    }
 
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(2, 350px);
-        gap: 20px;
-        justify-content: center;
-    }
+body{
+    margin:0;
+    padding:20px;
+    background:#06152b;
+    font-family:'Montserrat',sans-serif;
+    color:white;
+}
 
-    .widget {
-        width: 350px;
-        height: 278px;
+h1{
+    text-align:center;
+    margin-bottom:24px;
+    color:#7ec8ff;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.card{
+    background:#0b2347;
+    border-radius:18px;
+    padding:20px;
+    box-shadow:0 8px 24px rgba(0,0,0,.35);
+    min-height:220px;
+}
+
+.station{
+    font-size:28px;
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.category{
+    display:inline-block;
+    padding:6px 12px;
+    border-radius:999px;
+    font-weight:700;
+    margin-bottom:16px;
+}
+
+.vfr{ background:#00a651; }
+.mvfr{ background:#005bbb; }
+.ifr{ background:#d62828; }
+.lifr{ background:#ff00ff; }
+
+.data{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.label{
+    opacity:.7;
+    font-size:14px;
+}
+
+.value{
+    font-size:20px;
+    font-weight:600;
+}
+
+.raw{
+    margin-top:18px;
+    font-family:monospace;
+    font-size:14px;
+    opacity:.8;
+    line-height:1.5;
+}
+
+@media(max-width:900px){
+    .grid{
+        grid-template-columns:1fr;
     }
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="grid">
+<h1>Rocket Air Weather Dashboard</h1>
 
-    <div class="widget">
-        <a id="wx1"></a>
-    </div>
+<div class="grid" id="grid"></div>
 
-    <div class="widget">
-        <a id="wx2"></a>
-    </div>
+<script>
 
-    <div class="widget">
-        <a id="wx3"></a>
-    </div>
+const stations = ["KCOF","KMLB","KDAB","KORL"];
 
-    <div class="widget">
-        <a id="wx4"></a>
-    </div>
+async function loadWeather() {
 
-</div>
+    const grid = document.getElementById("grid");
+    grid.innerHTML = "";
 
-<script async defer crossorigin="anonymous"
-src="https://metar-taf.com/embed-js/KCOI?station_id=KCOF&layout=landscape&bg_color=012D68&visibility=mi&qnh=inHg&rh=rh&target=wx1">
-</script>
+    for (const station of stations) {
 
-<script async defer crossorigin="anonymous"
-src="https://metar-taf.com/embed-js/KMLB?station_id=KMLB&layout=landscape&bg_color=012D68&visibility=mi&qnh=inHg&rh=rh&target=wx2">
-</script>
+        try {
 
-<script async defer crossorigin="anonymous"
-src="https://metar-taf.com/embed-js/KDAB?station_id=KDAB&layout=landscape&bg_color=012D68&visibility=mi&qnh=inHg&rh=rh&target=wx3">
-</script>
+            const res = await fetch(
+                `https://aviationweather.gov/api/data/metar?ids=${station}&format=json`
+            );
 
-<script async defer crossorigin="anonymous"
-src="https://metar-taf.com/embed-js/KORL?station_id=KORL&layout=landscape&bg_color=012D68&visibility=mi&qnh=inHg&rh=rh&target=wx4">
+            const data = await res.json();
+            const metar = data[0];
+
+            const category = metar.flight_category || "N/A";
+
+            const card = document.createElement("div");
+            card.className = "card";
+
+            card.innerHTML = `
+                <div class="station">${station}</div>
+
+                <div class="category ${category.toLowerCase()}">
+                    ${category}
+                </div>
+
+                <div class="data">
+
+                    <div>
+                        <div class="label">Wind</div>
+                        <div class="value">
+                            ${metar.wdir || "VRB"}° @ ${metar.wspd || 0}kt
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="label">Visibility</div>
+                        <div class="value">
+                            ${metar.visib || "N/A"}sm
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="label">Temperature</div>
+                        <div class="value">
+                            ${metar.temp || "--"}°C
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="label">Altimeter</div>
+                        <div class="value">
+                            ${metar.altim || "--"}
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="raw">
+                    ${metar.rawOb}
+                </div>
+            `;
+
+            grid.appendChild(card);
+
+        } catch(err) {
+
+            console.error(err);
+
+        }
+
+    }
+
+}
+
+loadWeather();
+
+setInterval(loadWeather, 60000);
+
 </script>
 
 </body>
